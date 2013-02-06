@@ -1,0 +1,101 @@
+diff -up kdelibs-4.8.3/CMakeLists.txt.webkit kdelibs-4.8.3/CMakeLists.txt
+--- kdelibs-4.8.3/CMakeLists.txt.webkit	2012-04-29 22:38:24.266748427 +0200
++++ kdelibs-4.8.3/CMakeLists.txt	2012-05-04 12:35:38.086634268 +0200
+@@ -325,7 +325,6 @@ if(NOT WINCE)
+ add_subdirectory( plasma )
+ endif(NOT WINCE)
+ add_subdirectory( kunitconversion )
+-add_subdirectory( kdewebkit )
+ add_subdirectory( includes )
+ 
+ add_subdirectory( experimental )
+diff -up kdelibs-4.8.3/kdewidgets/CMakeLists.txt.webkit kdelibs-4.8.3/kdewidgets/CMakeLists.txt
+--- kdelibs-4.8.3/kdewidgets/CMakeLists.txt.webkit	2012-05-04 12:35:38.000000000 +0200
++++ kdelibs-4.8.3/kdewidgets/CMakeLists.txt	2012-05-04 12:37:23.482261882 +0200
+@@ -88,41 +88,6 @@ if(QT_QTDESIGNER_FOUND)
+     install(TARGETS kdedeprecated  DESTINATION ${PLUGIN_INSTALL_DIR}/plugins/designer )
+   endif(NOT KDE_NO_DEPRECATED)
+ 
+-
+-  # kdewebkit widgets
+-  include_directories(
+-    ${CMAKE_SOURCE_DIR}/kdewebkit
+-  )
+-
+-  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/kdewebkitwidgets.cpp
+-    COMMAND "${MAKEKDEWIDGETS_EXECUTABLE}" -o ${CMAKE_CURRENT_BINARY_DIR}/kdewebkitwidgets.cpp ${CMAKE_CURRENT_SOURCE_DIR}/kdewebkit.widgets
+-    MAIN_DEPENDENCY kdewebkit.widgets DEPENDS makekdewidgets4)
+-
+-  set(kdewebkitwidgets_PART_SRCS
+-     classpreviews.cpp
+-     ${CMAKE_CURRENT_BINARY_DIR}/kdewebkitwidgets.cpp
+-  )
+-
+-  qt4_generate_moc(${CMAKE_CURRENT_BINARY_DIR}/kdewebkitwidgets.cpp ${CMAKE_CURRENT_BINARY_DIR}/kdewebkitwidgets.moc)
+-
+-
+-  qt4_add_resources(kdewebkitwidgets_PART_SRCS kdewebkitwidgets.qrc)
+-
+-  kde4_add_plugin(kdewebkitwidgets ${kdewebkitwidgets_PART_SRCS})
+-
+-  target_link_libraries(kdewebkitwidgets ${KDE4_KDEUI_LIBS} ${KDE4_KDEWEBKIT_LIBS} ${QT_QTWEBKIT_LIBRARY})
+-#  if(NOT WIN32)
+-#    set_target_properties(kdewebkitwidgets PROPERTIES
+-#                                     INSTALL_RPATH_USE_LINK_PATH TRUE
+-#                                     SKIP_BUILD_RPATH TRUE
+-#                                     BUILD_WITH_INSTALL_RPATH TRUE
+-#                                     INSTALL_RPATH ${LIB_INSTALL_DIR}
+-#                         )
+-#  endif(NOT WIN32)
+-
+-  install(TARGETS kdewebkitwidgets  DESTINATION ${PLUGIN_INSTALL_DIR}/plugins/designer )
+-
+-
+   if (QT_QT3SUPPORT_FOUND)
+ 
+      include_directories(
+diff -up kdelibs-4.8.3/plasma/CMakeLists.txt.webkit kdelibs-4.8.3/plasma/CMakeLists.txt
+--- kdelibs-4.8.3/plasma/CMakeLists.txt.webkit	2012-02-29 22:55:52.532149866 +0100
++++ kdelibs-4.8.3/plasma/CMakeLists.txt	2012-05-04 12:35:38.088634242 +0200
+@@ -10,6 +10,8 @@ if(KDE_PLATFORM_FEATURE_BINARY_COMPATIBL
+     set(PLASMA_NO_GLOBAL_SHORTCUTS TRUE)
+ endif(KDE_PLATFORM_FEATURE_BINARY_COMPATIBLE_FEATURE_REDUCTION)
+ 
++set(PLASMA_NO_KDEWEBKIT TRUE)
++
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
+                     ${KDE4_KDECORE_INCLUDES}
+                     ${KDE4_KDEUI_INCLUDES}
+@@ -114,7 +116,6 @@ set(plasma_LIB_SRCS
+     framesvg.cpp
+     plasma.cpp
+     popupapplet.cpp
+-    private/animablegraphicswebview.cpp
+     private/applethandle.cpp
+     private/associatedapplicationmanager.cpp
+     private/datacontainer_p.cpp
+@@ -202,7 +203,6 @@ set(plasma_LIB_SRCS
+     widgets/textbrowser.cpp
+     widgets/treeview.cpp
+     widgets/textedit.cpp
+-    widgets/webview.cpp
+ 
+     #Temporary QtJolie branch
+     private/qtjolie-branch/qtjolie/abstractadaptor.cpp
+@@ -266,7 +266,7 @@ endif(PHONON_FOUND)
+ 
+ kde4_add_library(plasma ${LIBRARY_TYPE} ${plasma_LIB_SRCS})
+ 
+-target_link_libraries(plasma ${QT_QTUITOOLS_LIBRARY} ${QT_QTWEBKIT_LIBRARY}
++target_link_libraries(plasma ${QT_QTUITOOLS_LIBRARY}
+                              ${QT_QTSCRIPT_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTSQL_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY}
+                              ${KDE4_KDEUI_LIBS} ${KDE4_KDNSSD_LIBS} ${KDE4_THREADWEAVER_LIBS} ${PLASMA_EXTRA_LIBS})
+ 
+@@ -406,7 +406,6 @@ install(FILES
+     widgets/textbrowser.h
+     widgets/treeview.h
+     widgets/textedit.h
+-    widgets/webview.h
+     DESTINATION ${INCLUDE_INSTALL_DIR}/plasma/widgets COMPONENT Devel)
+ 
+ install(FILES

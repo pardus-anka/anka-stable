@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kblocks</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kblocks</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>Falling blocks game</Summary>
+        <Description>KBlocks is the classic falling blocks game. The idea is stack the falling blocks in a way that lines are completely filled. When a line is completed it is removed, and more space is available in the play area. When there is not enough space for blocks to fall, the game is over.</Description>
+        <Archive sha1sum="60d080ddd51cba45743054434d8c1821d7da238b" type="tarxz">mirrors://kde/unstable/4.9.98/src/kblocks-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>    
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kblocks</Name>        
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>kde-runtime</Dependency>  
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

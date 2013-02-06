@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kajongg</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kajongg</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>Mah Jongg</Summary>
+        <Description>Kajongg is the ancient Chinese board game for 4 players. Kajongg can be used in two different ways: Scoring a manual game where you play as always and use Kajongg for the computation of scores and for bookkeeping.</Description>
+        <Archive sha1sum="9c278ab73e72626f5e168c6c1e7dc307d0ac804d" type="tarxz">mirrors://kde/unstable/4.9.98/src/kajongg-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>libkmahjongg-devel</Dependency>
+            <Dependency>python-kde-devel</Dependency>
+            <Dependency>python-Twisted</Dependency>    
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kajongg</Name>
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>libkmahjongg</Dependency>
+            <Dependency>python-kde</Dependency>
+            <Dependency>python-Twisted</Dependency>    
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History> 
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

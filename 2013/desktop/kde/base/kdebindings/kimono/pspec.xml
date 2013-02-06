@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kimono</Name>
+        <Homepage>http://kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv1</License>
+        <IsA>library</IsA>
+        <Summary>.NET/Mono bindings for the KDE libraries</Summary>
+        <Description>.NET/Mono bindings for the KDE libraries</Description>
+        <Archive sha1sum="807bfdd179b7b1317ffca5a5654e88c7cf0c4a7c" type="tarxz">mirrors://kde/unstable/4.9.98/src/kimono-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>qyoto-devel</Dependency>
+            <Dependency>smoke-gen-devel</Dependency>
+            <Dependency>smoke-kde-devel</Dependency>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>kdepimlibs-devel</Dependency>
+            <Dependency>mono-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kimono</Name>
+        <RuntimeDependencies>
+            <Dependency>qyoto</Dependency>
+            <Dependency>smoke-kde</Dependency>
+            <Dependency>mono-devel</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

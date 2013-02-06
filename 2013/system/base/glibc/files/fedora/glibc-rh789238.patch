@@ -1,0 +1,115 @@
+Only in b/malloc: arena.c.orig
+Only in b/malloc: hooks.c.orig
+diff -rup a/malloc/malloc.c b/malloc/malloc.c
+--- a/malloc/malloc.c	2012-02-14 10:08:22.062534892 -0700
++++ b/malloc/malloc.c	2012-02-14 10:19:43.088724473 -0700
+@@ -2936,8 +2936,9 @@ public_mALLOc(size_t bytes)
+       (void)mutex_unlock(&ar_ptr->mutex);
+     } else {
+       /* ... or sbrk() has failed and there is still a chance to mmap() */
+-      ar_ptr = arena_get2(ar_ptr->next ? ar_ptr : 0, bytes);
+-      (void)mutex_unlock(&main_arena.mutex);
++      mstate prev = ar_ptr->next ? ar_ptr : 0;
++      (void)mutex_unlock(&ar_ptr->mutex);
++      ar_ptr = arena_get2(prev, bytes);
+       if(ar_ptr) {
+ 	victim = _int_malloc(ar_ptr, bytes);
+ 	(void)mutex_unlock(&ar_ptr->mutex);
+@@ -3151,23 +3152,26 @@ public_vALLOc(size_t bytes)
+   if(!ar_ptr)
+     return 0;
+   p = _int_valloc(ar_ptr, bytes);
+-  (void)mutex_unlock(&ar_ptr->mutex);
+   if(!p) {
+     /* Maybe the failure is due to running out of mmapped areas. */
+     if(ar_ptr != &main_arena) {
++      (void)mutex_unlock(&ar_ptr->mutex);
+       ar_ptr = &main_arena;
+       (void)mutex_lock(&ar_ptr->mutex);
+       p = _int_memalign(ar_ptr, pagesz, bytes);
+       (void)mutex_unlock(&ar_ptr->mutex);
+     } else {
+       /* ... or sbrk() has failed and there is still a chance to mmap() */
+-      ar_ptr = arena_get2(ar_ptr->next ? ar_ptr : 0, bytes);
++      mstate prev = ar_ptr->next ? ar_ptr : 0;
++      (void)mutex_unlock(&ar_ptr->mutex);
++      ar_ptr = arena_get2(prev, bytes);
+       if(ar_ptr) {
+ 	p = _int_memalign(ar_ptr, pagesz, bytes);
+ 	(void)mutex_unlock(&ar_ptr->mutex);
+       }
+     }
+-  }
++  } else
++    (void)mutex_unlock(&ar_ptr->mutex);
+   assert(!p || chunk_is_mmapped(mem2chunk(p)) ||
+ 	 ar_ptr == arena_for_chunk(mem2chunk(p)));
+ 
+@@ -3195,24 +3199,26 @@ public_pVALLOc(size_t bytes)
+ 
+   arena_get(ar_ptr, bytes + 2*pagesz + MINSIZE);
+   p = _int_pvalloc(ar_ptr, bytes);
+-  (void)mutex_unlock(&ar_ptr->mutex);
+   if(!p) {
+     /* Maybe the failure is due to running out of mmapped areas. */
+     if(ar_ptr != &main_arena) {
++      (void)mutex_unlock(&ar_ptr->mutex);
+       ar_ptr = &main_arena;
+       (void)mutex_lock(&ar_ptr->mutex);
+       p = _int_memalign(ar_ptr, pagesz, rounded_bytes);
+       (void)mutex_unlock(&ar_ptr->mutex);
+     } else {
+       /* ... or sbrk() has failed and there is still a chance to mmap() */
+-      ar_ptr = arena_get2(ar_ptr->next ? ar_ptr : 0,
+-			  bytes + 2*pagesz + MINSIZE);
++      mstate prev = ar_ptr->next ? ar_ptr : 0;
++      (void)mutex_unlock(&ar_ptr->mutex);
++      ar_ptr = arena_get2(prev, bytes + 2*pagesz + MINSIZE);
+       if(ar_ptr) {
+ 	p = _int_memalign(ar_ptr, pagesz, rounded_bytes);
+ 	(void)mutex_unlock(&ar_ptr->mutex);
+       }
+     }
+-  }
++  } else
++    (void)mutex_unlock(&ar_ptr->mutex);
+   assert(!p || chunk_is_mmapped(mem2chunk(p)) ||
+ 	 ar_ptr == arena_for_chunk(mem2chunk(p)));
+ 
+@@ -3277,8 +3283,6 @@ public_cALLOc(size_t n, size_t elem_size
+ #endif
+   mem = _int_malloc(av, sz);
+ 
+-  /* Only clearing follows, so we can unlock early. */
+-  (void)mutex_unlock(&av->mutex);
+ 
+   assert(!mem || chunk_is_mmapped(mem2chunk(mem)) ||
+ 	 av == arena_for_chunk(mem2chunk(mem)));
+@@ -3286,21 +3290,23 @@ public_cALLOc(size_t n, size_t elem_size
+   if (mem == 0) {
+     /* Maybe the failure is due to running out of mmapped areas. */
+     if(av != &main_arena) {
++      (void)mutex_unlock(&av->mutex);
+       (void)mutex_lock(&main_arena.mutex);
+       mem = _int_malloc(&main_arena, sz);
+       (void)mutex_unlock(&main_arena.mutex);
+     } else {
+       /* ... or sbrk() has failed and there is still a chance to mmap() */
+-      (void)mutex_lock(&main_arena.mutex);
+-      av = arena_get2(av->next ? av : 0, sz);
+-      (void)mutex_unlock(&main_arena.mutex);
++      mstate prev = av->next ? av : 0;
++      (void)mutex_unlock(&av->mutex);
++      av = arena_get2(prev, sz);
+       if(av) {
+ 	mem = _int_malloc(av, sz);
+ 	(void)mutex_unlock(&av->mutex);
+       }
+     }
+     if (mem == 0) return 0;
+-  }
++  } else
++    (void)mutex_unlock(&av->mutex);
+   p = mem2chunk(mem);
+ 
+   /* Two optional cases in which clearing not necessary */

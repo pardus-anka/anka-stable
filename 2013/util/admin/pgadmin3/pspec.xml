@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>pgadmin3</Name>
+        <Homepage>http://www.pgadmin.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>BSD</License>
+        <IsA>app:gui</IsA>
+        <Summary>Graphical client for PostgreSQL</Summary>
+        <Description>pgadmin3 is a powerful administration and development platform for the PostgreSQL database, free for any use.</Description>
+        <Archive sha1sum="c734e65679922d780953a4d79429037f1c8b1e9b" type="targz">ftp://ftp.postgresql.org/pub/pgadmin3/release/v1.12.2/src/pgadmin3-1.12.2.tar.gz</Archive>
+        <BuildDependencies>
+            <Dependency>postgresql-lib</Dependency>
+            <Dependency>libxslt-devel</Dependency>
+            <Dependency>wxGTK-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+            <Patch level="1">pgadmin3-1.10.0-optflags.patch</Patch>
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>pgadmin3</Name>
+        <RuntimeDependencies>
+            <Dependency>postgresql-lib</Dependency>
+            <Dependency>libxslt</Dependency>
+            <Dependency>wxGTK</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share/pgadmin3</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/pixmaps</Path>
+        </Files>
+        <AdditionalFiles>
+            <AdditionalFile owner="root" permission="0644" target="/usr/share/applications/pgadmin3.desktop">pgadmin3.desktop</AdditionalFile>
+        </AdditionalFiles>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2011-01-07</Date>
+            <Version>1.12.2</Version>
+            <Comment>First release</Comment>
+            <Name>Ozan Çağlayan</Name>
+            <Email>ozan@pardus.org.tr</Email>
+        </Update>
+    </History>
+</PISI>

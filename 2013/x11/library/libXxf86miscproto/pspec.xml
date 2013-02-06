@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>libXxf86miscproto</Name>
+        <Homepage>http://www.x.org/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>MIT</License>
+        <IsA>library</IsA>
+        <Summary>X.Org Xxf86miscproto library</Summary>
+        <Description>LibXxf86miscproto is the client library for the XFree86-miscproto extension.</Description>
+        <Archive sha1sum="62443c61d89c352f4ca91ff03ba27c078ba34157" type="targz">http://anka.pardus-linux.org/2013/source/xf86miscproto-0.9.2.tar.gz</Archive>
+        <BuildDependencies>
+            <Dependency>libXext-devel</Dependency>
+            <Dependency>xorg-proto</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>libXxf86miscproto</Name>
+        <RuntimeDependencies>
+            <Dependency>libXext</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>libXxf86miscproto-devel</Name>
+        <Summary>Development files for libXxf86miscproto</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">libXxf86miscproto</Dependency>
+            <Dependency>libXext-devel</Dependency>
+            <Dependency>xorg-proto</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include/X11</Path>
+            <Path fileType="data">/usr/lib/pkgconfig</Path>
+            <Path fileType="data">/usr/lib32/pkgconfig</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-10-23</Date>
+            <Version>0.9.2</Version>
+            <Comment>First release</Comment>
+            <Name>Osman Erkan</Name>
+            <Email>namso-01@hotmail.it</Email>
+        </Update>
+    </History>
+</PISI>

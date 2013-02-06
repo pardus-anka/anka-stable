@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>konquest</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>konquest</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>Galactic strategy game</Summary>
+        <Description>Konquest is the KDE version of Gnu-Lactic. Players conquer other planets by sending ships to them.</Description>
+        <Archive sha1sum="aba47427d9f91445aed5ca1855ded1fcb15aa1c9" type="tarxz">mirrors://kde/unstable/4.9.98/src/konquest-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>    
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>konquest</Name>        
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>kde-runtime</Dependency>  
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History> 
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>       
+    </History>
+</PISI>

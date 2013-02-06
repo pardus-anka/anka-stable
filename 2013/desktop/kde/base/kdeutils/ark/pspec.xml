@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>ark</Name>
+        <Homepage>http://kde.org/applications/utilities/ark</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>ark</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>An archiving tool</Summary>
+        <Description>Ark is a program for managing various archive formats within the KDE environment.</Description>
+        <Archive sha1sum="36d266b03475b5264cd2fed0d45dd037e73316ca" type="tarxz">mirrors://kde/unstable/4.9.98/src/ark-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kde-workspace</Dependency>
+            <Dependency>kde-baseapps</Dependency>
+            <Dependency>kde-runtime</Dependency>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>libarchive-devel</Dependency>
+            <Dependency>libzip-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+            <Patch level="1">ark-4.7.80-namelink_skip.patch</Patch>
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>ark</Name>
+        <RuntimeDependencies>
+            <Dependency>kde-workspace</Dependency>
+            <Dependency>kde-baseapps</Dependency>
+            <Dependency>kde-runtime</Dependency>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>libarchive</Dependency>
+            <Dependency>libzip-devel</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/config.kcfg</Path>
+            <Path fileType="data">/usr/share</Path>
+            <Path fileType="man">/usr/share/man</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

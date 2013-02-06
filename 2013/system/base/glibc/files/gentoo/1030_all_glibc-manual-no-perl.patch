@@ -1,0 +1,23 @@
+If we're using a cvs snapshot which updates the source files, and
+perl isn't installed yet, then we can't regen the docs.  Not a big
+deal, so just whine a little and continue on our merry way.
+
+http://bugs.gentoo.org/60132
+
+--- libc/manual/Makefile
++++ libc/manual/Makefile
+@@ -108,9 +108,14 @@
+ $(objpfx)libm-err.texi: $(objpfx)stamp-libm-err
+ $(objpfx)stamp-libm-err: libm-err-tab.pl $(wildcard $(foreach dir,$(sysdirs),\
+ 						     $(dir)/libm-test-ulps))
++ifneq ($(PERL),no)
+ 	pwd=`pwd`; \
+ 	$(PERL) $< $$pwd/.. > $(objpfx)libm-err-tmp
+ 	$(move-if-change) $(objpfx)libm-err-tmp $(objpfx)libm-err.texi
++else
++	echo "Unable to rebuild math docs, no perl installed"
++	touch libm-err.texi
++endif
+ 	touch $@
+ 
+ # Generate a file with the version number.

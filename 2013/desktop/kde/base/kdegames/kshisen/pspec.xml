@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kshisen</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kshisen</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>Shisen-Sho Mahjongg like tile game</Summary>
+        <Description>Shisen-Sho is a solitaire-like game played using the standard set of Mahjong tiles. Unlike Mahjong however, Shisen-Sho has only one layer of scrambled tiles.</Description>
+        <Archive sha1sum="65cf5ffa2fec26d7610a4101dcd18303bf7b9022" type="tarxz">mirrors://kde/unstable/4.9.98/src/kshisen-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>libkmahjongg-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kshisen</Name>        
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>kde-runtime</Dependency> 
+            <Dependency>libkdegames</Dependency>
+            <Dependency>libkmahjongg</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>       
+    </History>
+</PISI>

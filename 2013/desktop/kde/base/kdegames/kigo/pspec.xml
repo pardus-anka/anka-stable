@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kigo</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kigo</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A go board game</Summary>
+        <Description>Kigo is an open-source implementation of the popular Go game. Go is a strategic board game for two players.</Description>
+        <Archive sha1sum="f083b49961f683009e083dd04027c3591292554d" type="tarxz">mirrors://kde/unstable/4.9.98/src/kigo-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>  
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kigo</Name>        
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>kde-runtime</Dependency>   
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

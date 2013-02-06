@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>diffstat</Name>
+        <Homepage>http://invisible-island.net/diffstat/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>as-is</License>
+        <IsA>app:console</IsA>
+        <Summary>Diffstat reads the output of the diff command and displays a histogram of the insertions, deletions, and modifications in each file</Summary>
+        <Description>Diffstat reads the output of the diff command and displays a histogram of the insertions, deletions, and modifications in each file.Diffstat is commonly used to provide a summary of the changes in large, complex patch files.</Description>
+        <Archive sha1sum="625650a9f1a27edbb98316adb3013e57c8e2e23a" type="targz">ftp://invisible-island.net/diffstat/diffstat-1.55.tgz</Archive>
+        <BuildDependencies>
+            <!-- configure script checks the presence of following tools. -->
+            <Dependency>xz</Dependency>
+            <Dependency>gzip</Dependency>
+            <Dependency>bzip2</Dependency>
+            <Dependency>ncompress</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>diffstat</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+    </Package>
+
+    <History>
+      <Update release="1">
+            <Date>2012-08-15</Date>
+            <Version>1.55</Version>
+            <Comment>First release</Comment>
+            <Name>Ramazan Utku</Name>
+            <Email>ramazanutku@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

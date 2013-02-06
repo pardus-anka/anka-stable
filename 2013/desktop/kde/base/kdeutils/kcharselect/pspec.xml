@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kcharselect</Name>
+        <Homepage>http://utils.kde.org/projects/kcharselect</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kcharselect</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A character selector</Summary>
+        <Description>KCharSelect is a tool to select special characters from all installed fonts and copy them into the clipboard.</Description>
+        <Archive sha1sum="c6383073a2e5dfed6aa6c5bafd7e1707f7f701dc" type="tarxz">mirrors://kde/unstable/4.9.98/src/kcharselect-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kcharselect</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+    
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

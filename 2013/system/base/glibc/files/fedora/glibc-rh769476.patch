@@ -1,0 +1,19 @@
+commit 8fa26d571d4b87a1c7a7f19f1365f7e5d2995933
+Author: Ulrich Drepper <drepper@gmail.com>
+Date:   Wed Dec 21 18:57:18 2011 -0500
+
+    Fix one typo
+
+diff --git a/time/tzfile.c b/time/tzfile.c
+index 402389c..a8c1c0e 100644
+--- a/time/tzfile.c
++++ b/time/tzfile.c
+@@ -278,7 +278,7 @@ __tzfile_read (const char *file, size_t extra, char **extrap)
+       if (__builtin_expect (tzspec_len < num_isstd, 0))
+ 	goto lose;
+       tzspec_len -= num_isstd;
+-      if (__builtin_expect (tzspec == 0 || tzspec_len - 1 < num_isgmt, 0))
++      if (__builtin_expect (tzspec_len == 0 || tzspec_len - 1 < num_isgmt, 0))
+ 	goto lose;
+       tzspec_len -= num_isgmt + 1;
+       if (__builtin_expect (SIZE_MAX - total_size < tzspec_len, 0))

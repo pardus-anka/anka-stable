@@ -1,0 +1,12 @@
+diff -rup a/localedata/locales/uk_UA b/localedata/locales/uk_UA
+--- a/localedata/locales/uk_UA	2012-01-01 05:16:32.000000000 -0700
++++ b/localedata/locales/uk_UA	2012-02-09 22:32:36.864134146 -0700
+@@ -700,7 +700,7 @@ LC_MONETARY
+ % 200 hrv. - 200 hryven (money)
+ 
+ % the local currency symbol
+-currency_symbol           "<U0433><U0440>" % hr (hryvnya)
++currency_symbol           "<U0433><U0440><U043D><U002E>" % hr (hryvnya)
+ 
+ % This must be a 4-character string containing the international currency
+ % symbol as defined by the ISO 4217 standard (three characters) followed

@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>palapeli</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>palapeli</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A jigsaw puzzle game</Summary>
+        <Description>Palapeli is a single-player jigsaw puzzle game. Unlike other games in that genre, you are not limited to aligning pieces on imaginary grids.</Description>
+        <Archive sha1sum="b5e1dc72b2fbf4913bcafd6332166c0fa1410c4f" type="tarxz">mirrors://kde/unstable/4.9.98/src/palapeli-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>    
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>palapeli</Name>        
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>kde-runtime</Dependency>  
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="header">/usr/include/kde4/libpala</Path>
+            <Path fileType="data">/usr/include/kde4/Pala</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History> 
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>       
+    </History>
+</PISI>

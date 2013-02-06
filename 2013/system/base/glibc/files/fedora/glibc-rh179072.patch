@@ -1,0 +1,158 @@
+diff -Nrup c/elf/dl-close.c d/elf/dl-close.c
+--- c/elf/dl-close.c	2012-05-21 00:08:02.410897531 -0600
++++ d/elf/dl-close.c	2012-05-21 00:08:40.874716006 -0600
+@@ -31,6 +31,7 @@
+ #include <sys/mman.h>
+ #include <sysdep-cancel.h>
+ #include <tls.h>
++#include <stap-probe.h>
+ 
+ 
+ /* Type of the constructor functions.  */
+@@ -468,6 +469,7 @@ _dl_close_worker (struct link_map *map)
+   struct r_debug *r = _dl_debug_initialize (0, nsid);
+   r->r_state = RT_DELETE;
+   _dl_debug_state ();
++  LIBC_PROBE (rtld_unmap_start, 2, nsid, r);
+ 
+   if (unload_global)
+     {
+@@ -737,6 +739,7 @@ _dl_close_worker (struct link_map *map)
+   /* Notify the debugger those objects are finalized and gone.  */
+   r->r_state = RT_CONSISTENT;
+   _dl_debug_state ();
++  LIBC_PROBE (rtld_unmap_complete, 2, nsid, r);
+ 
+   /* Recheck if we need to retry, release the lock.  */
+  out:
+diff -Nrup c/elf/dl-load.c d/elf/dl-load.c
+--- c/elf/dl-load.c	2012-05-21 00:08:02.219898432 -0600
++++ d/elf/dl-load.c	2012-05-21 00:08:40.876715997 -0600
+@@ -35,6 +35,7 @@
+ #include <stackinfo.h>
+ #include <caller.h>
+ #include <sysdep.h>
++#include <stap-probe.h>
+ 
+ #include <dl-dst.h>
+ 
+@@ -880,7 +881,7 @@ _dl_init_paths (const char *llp)
+ static void
+ __attribute__ ((noreturn, noinline))
+ lose (int code, int fd, const char *name, char *realname, struct link_map *l,
+-      const char *msg, struct r_debug *r)
++      const char *msg, struct r_debug *r, Lmid_t nsid)
+ {
+   /* The file might already be closed.  */
+   if (fd != -1)
+@@ -894,6 +895,7 @@ lose (int code, int fd, const char *name
+     {
+       r->r_state = RT_CONSISTENT;
+       _dl_debug_state ();
++      LIBC_PROBE (rtld_map_complete, 2, nsid, r);
+     }
+ 
+   _dl_signal_error (code, name, NULL, msg);
+@@ -932,7 +934,7 @@ _dl_map_object_from_fd (const char *name
+       errval = errno;
+     call_lose:
+       lose (errval, fd, name, realname, l, errstring,
+-	    make_consistent ? r : NULL);
++	    make_consistent ? r : NULL, nsid);
+     }
+ 
+   /* Look again to see if the real name matched another already loaded.  */
+@@ -1039,6 +1041,7 @@ _dl_map_object_from_fd (const char *name
+ 	 linking has not been used before.  */
+       r->r_state = RT_ADD;
+       _dl_debug_state ();
++      LIBC_PROBE (rtld_map_start, 2, nsid, r);
+       make_consistent = true;
+     }
+   else
+@@ -1734,7 +1737,7 @@ open_verify (const char *name, struct fi
+ 	      name = strdupa (realname);
+ 	      free (realname);
+ 	    }
+-	  lose (errval, fd, name, NULL, NULL, errstring, NULL);
++	  lose (errval, fd, name, NULL, NULL, errstring, NULL, 0);
+ 	}
+ 
+       /* See whether the ELF header is what we expect.  */
+diff -Nrup c/elf/dl-open.c d/elf/dl-open.c
+--- c/elf/dl-open.c	2012-05-20 19:47:38.000000000 -0600
++++ d/elf/dl-open.c	2012-05-21 00:11:29.229920776 -0600
+@@ -32,6 +32,7 @@
+ #include <caller.h>
+ #include <sysdep-cancel.h>
+ #include <tls.h>
++#include <stap-probe.h>
+ 
+ #include <dl-dst.h>
+ 
+@@ -291,6 +292,7 @@ dl_open_worker (void *a)
+   struct r_debug *r = _dl_debug_initialize (0, args->nsid);
+   r->r_state = RT_CONSISTENT;
+   _dl_debug_state ();
++  LIBC_PROBE (rtld_map_complete, 2, args->nsid, r);
+ 
+   /* Print scope information.  */
+   if (__builtin_expect (GLRO(dl_debug_mask) & DL_DEBUG_SCOPES, 0))
+@@ -376,10 +378,19 @@ dl_open_worker (void *a)
+ 	}
+     }
+ 
++  int relocation_in_progress = 0;
++
+   for (size_t i = nmaps; i-- > 0; )
+     {
+       l = maps[i];
+ 
++      if (! relocation_in_progress)
++	{
++	  /* Notify the debugger that relocations are about to happen.  */
++	  LIBC_PROBE (rtld_reloc_start, 2, args->nsid, r);
++	  relocation_in_progress = 1;
++	}
++
+ #ifdef SHARED
+       if (__builtin_expect (GLRO(dl_profile) != NULL, 0))
+ 	{
+@@ -544,6 +555,10 @@ cannot load any more object with static
+ 	}
+     }
+ 
++  /* Notify the debugger all new objects have been relocated.  */
++  if (relocation_in_progress)
++    LIBC_PROBE (rtld_reloc_complete, 2, args->nsid, r);
++
+   /* Run the initializer functions of new objects.  */
+   _dl_init (new, args->argc, args->argv, args->env);
+ 
+diff -Nrup c/elf/rtld.c d/elf/rtld.c
+--- c/elf/rtld.c	2012-05-21 00:08:02.415897505 -0600
++++ d/elf/rtld.c	2012-05-21 00:08:40.917715803 -0600
+@@ -39,6 +39,7 @@
+ #include <dl-osinfo.h>
+ #include <dl-procinfo.h>
+ #include <tls.h>
++#include <stap-probe.h>
+ #include <stackinfo.h>
+ 
+ #include <assert.h>
+@@ -1681,6 +1682,7 @@ ERROR: ld.so: object '%s' cannot be load
+   /* We start adding objects.  */
+   r->r_state = RT_ADD;
+   _dl_debug_state ();
++  LIBC_PROBE (rtld_init_start, 2, LM_ID_BASE, r);
+ 
+   /* Auditing checkpoint: we are ready to signal that the initial map
+      is being constructed.  */
+@@ -2398,6 +2400,7 @@ ERROR: ld.so: object '%s' cannot be load
+   r = _dl_debug_initialize (0, LM_ID_BASE);
+   r->r_state = RT_CONSISTENT;
+   _dl_debug_state ();
++  LIBC_PROBE (rtld_init_complete, 2, LM_ID_BASE, r);
+ 
+ #ifndef MAP_COPY
+   /* We must munmap() the cache file.  */

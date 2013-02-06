@@ -1,0 +1,22 @@
+diff -up kdelibs-4.7.2/kjs/wtf/Platform.h.me kdelibs-4.7.2/kjs/wtf/Platform.h
+--- kdelibs-4.7.2/kjs/wtf/Platform.h.me	2011-12-06 10:10:08.372356038 -0500
++++ kdelibs-4.7.2/kjs/wtf/Platform.h	2011-12-06 10:48:51.962357831 -0500
+@@ -97,6 +97,18 @@
+ 
+ /* CPU */
+ 
++/* PLATFORM(S390X) - S390X 64-bit */                                                                                  
++#if defined(__s390x__)                                                                                          
++#define WTF_PLATFORM_S390X 1                                                                                         
++#define WTF_PLATFORM_BIG_ENDIAN 1                                                                                    
++#endif                                                                                                          
++                                                                                                                
++/* PLATFORM(S390) - S390 32-bit */                                                                                   
++#if defined(__s390__)                                                                                           
++#define WTF_PLATFORM_S390 1                                                                                          
++#define WTF_PLATFORM_BIG_ENDIAN 1                                                                                    
++#endif                                                                                                          
++
+ /* PLATFORM(PPC) */
+ #if   defined(__ppc__)     \
+    || defined(__PPC__)     \

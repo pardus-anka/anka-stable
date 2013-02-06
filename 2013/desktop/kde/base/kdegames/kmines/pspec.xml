@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kmines</Name>
+        <Homepage>http://games.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kmines</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>Minesweeper like game</Summary>
+        <Description>KMines is the classic Minesweeper game. The idea is to uncover all the squares without blowing up any mines. When a mine is blown up, the game is over.</Description>
+        <Archive sha1sum="2f3f5f58763d1f9e0c7eecae1e967ca7d2b352e6" type="tarxz">mirrors://kde/unstable/4.9.98/src/kmines-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>libkdegames-devel</Dependency>
+            <Dependency>kde-runtime-devel</Dependency>    
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kmines</Name>        
+        <RuntimeDependencies>
+            <Dependency>libkdegames</Dependency>
+            <Dependency>kde-runtime</Dependency>  
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path> 
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History> 
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>       
+    </History>
+</PISI>

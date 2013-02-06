@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>konsole</Name>
+        <Homepage>http://kde.org/applications/system/konsole</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>utulities-terminal</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>KDE4 terminal application</Summary>
+        <Description>Konsole KDE4 terminal emulator.</Description>
+        <Archive type="tarxz" sha1sum="9f02005d23db65839408be8a226fb5b86f7539b7">mirrors://kde/unstable/4.9.98/src/konsole-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>kde-baseapps-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+<!--             <Patch>konsole-4.8.0-disable-ctrl-drag.diff</Patch> -->
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>konsole</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>kde-baseapps</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

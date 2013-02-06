@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>media-player-info</Name>
+        <Homepage>http://cgit.freedesktop.org/media-player-info</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>BSD</License>
+        <Summary>Media player capability database</Summary>
+        <Description>media-player-info is a repository of data files describing media player capabilities. These files contain information about the directory layout to use to add music to these devices, about the supported file formats, etc.</Description>
+        <Archive sha1sum="f81b1ba8662109b5d9ef420201d2221d5e453d6b" type="targz">http://www.freedesktop.org/software/media-player-info/media-player-info-15.tar.gz</Archive>
+        <BuildDependencies>
+            <!-- For pkgconfig fixes in udev -->
+            <Dependency>udev</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>media-player-info</Name>
+        <Files>
+            <Path fileType="data">/lib/udev/rules.d</Path>
+            <Path fileType="data">/usr/share/media-player-info</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2011-10-05</Date>
+            <Version>15</Version>
+            <Comment>First release</Comment>
+            <Name>Ozan Çağlayan</Name>
+            <Email>ozan@pardus.org.tr</Email>
+        </Update>
+    </History>
+</PISI>

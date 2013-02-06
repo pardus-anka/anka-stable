@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>inxi</Name>
+        <Homepage>http://code.google.com/p/inxi/</Homepage>
+        <Packager>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Packager>
+        <License>GPLv1</License>
+        <IsA>app:console</IsA>
+        <Summary>script to get system information</Summary>
+        <Description>script to get system information</Description>
+        <Archive sha1sum="a15bae9e7ca00650adc0b0055721792b3c806b1f" type="tarxz">http://anka.pardus-linux.org/2013/source/inxi-1.8.32.tar.xz</Archive>
+    </Source>
+
+    <Package>
+        <Name>inxi</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="man">/usr/share/man</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-28</Date>
+            <Version>1.8.32</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>
+    </History>
+</PISI>

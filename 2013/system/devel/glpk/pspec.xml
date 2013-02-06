@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>glpk</Name>
+        <Homepage>http://www.gnu.org/software/glpk/glpk.html</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>library</IsA>
+        <Summary>GNU Linear Programming Kit</Summary>
+        <Description>The GLPK (GNU Linear Programming Kit) package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</Description>
+        <Archive sha1sum="35e16d3167389b6bc75eb51b4b48590db59f789c" type="targz">mirrors://gnu/glpk/glpk-4.47.tar.gz</Archive>
+    </Source>
+
+    <Package>
+        <Name>glpk</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>glpk-devel</Name>
+        <Summary>Development files for glpk</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">glpk</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+        </Files>
+    </Package>
+
+    <History>
+      <Update release="1">
+            <Date>2012-08-16</Date>
+            <Version>4.47</Version>
+            <Comment>First release</Comment>
+            <Name>Ramazan Utku</Name>
+            <Email>ramazanutku@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

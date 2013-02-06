@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kalzium</Name>
+        <Homepage>http://edu.kde.org/applications/science/kalzium</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2+</License>
+        <Icon>kalzium</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>An application presenting the periodic table of elements</Summary>
+        <Description>Kalzium is an application which will show you some information about the periodic system of the elements. Therefore you could use it as an information database.</Description>
+        <Archive sha1sum="4a28a453b667d607cde60f8be1a226f6403294bb" type="tarxz">mirrors://kde/unstable/4.9.98/src/kalzium-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>libkdeedu-devel</Dependency>    
+            <Dependency>eigen</Dependency>
+            <Dependency>avogadro-devel</Dependency>
+            <Dependency>openbabel-devel</Dependency>
+            <Dependency>ocaml</Dependency>
+            <Dependency>facile</Dependency>
+        </BuildDependencies>
+        <Patches>
+<!--             <Patch level="1">kdeedu-kalzium_openbabel.diff</Patch> -->
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>kalzium</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>libkdeedu</Dependency>    
+            <Dependency>eigen</Dependency>
+            <Dependency>avogadro-libs</Dependency>
+            <Dependency>openbabel</Dependency>
+            <Dependency>ocaml</Dependency>
+            <Dependency>facile</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="data">/usr/share/icons</Path>
+            <Path fileType="data">/usr/share/config.kcfg</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="man">/usr/share/man</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>kalzium-devel</Name>
+        <Summary>Development files for kalzium</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">kalzium</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+            <Path fileType="data">/usr/share/kde4/apps/cmake</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

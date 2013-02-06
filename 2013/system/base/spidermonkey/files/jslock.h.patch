@@ -1,0 +1,17 @@
+--- js/src/jslock.h.orig	2011-03-31 22:08:36.000000000 +0300
++++ js/src/jslock.h	2012-09-20 19:10:43.000000000 +0300
+@@ -44,10 +44,10 @@
+ #include "jsprvtd.h"
+ 
+ #ifdef JS_THREADSAFE
+-# include "pratom.h"
+-# include "prlock.h"
+-# include "prcvar.h"
+-# include "prthread.h"
++# include "nspr/pratom.h"
++# include "nspr/prlock.h"
++# include "nspr/prcvar.h"
++# include "nspr/prthread.h"
+ #endif
+ 
+ JS_BEGIN_EXTERN_C

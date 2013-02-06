@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kdewebdev</Name>
+        <Homepage>http://www.kde.org/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>app:gui</IsA>
+        <Summary>KDE4 web development applications</Summary>
+        <Description>Contains web development applications that ship with KDE4.</Description>
+        <Archive sha1sum="26479904724ad94f4315b300b02b66b65761141d" type="tarxz">mirrors://kde/unstable/4.9.98/src/kdewebdev-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>kdepimlibs-devel</Dependency>
+            <Dependency>tidy-devel</Dependency>
+            <Dependency>ruby</Dependency>
+            <Dependency>libxml2-devel</Dependency>
+            <Dependency>libxslt-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kdewebdev</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>kdepimlibs</Dependency>
+            <Dependency>tidy</Dependency>
+            <Dependency>ruby</Dependency>
+            <Dependency>libxslt</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>kdewebdev-devel</Name>
+        <Summary>KDE4 web development applications - development headers and data</Summary>
+        <RuntimeDependencies>
+            <Dependency version="current">kdewebdev</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-01-06</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

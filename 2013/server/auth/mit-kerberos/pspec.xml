@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>mit-kerberos</Name>
+        <Homepage>http://web.mit.edu/kerberos/www/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>as-is</License>
+        <IsA>library</IsA>
+        <IsA>app:console</IsA>
+        <Summary>MIT Kerberos Library</Summary>
+        <Description>Kerberos is a network authentication protocol. It is designed to provide strong authentication for client/server applications by using secret-key cryptography.</Description>
+        <Archive sha1sum="83bbfdb596be6cab5c7b73e554401a8b1d7987e1" type="tarxz">http://sources.pardus-linux.org/krb5-1.10.3.tar.xz</Archive>
+
+        <BuildDependencies>
+            <Dependency>keyutils</Dependency>
+            <!-- FIXME: openldap-client requires mit-kerberos too -->
+            <!-- disable for now for the circualr dep
+            <Dependency>openldap-client</Dependency>
+            -->
+        </BuildDependencies>
+        <Patches>
+            <Patch level="0">rebuild-configure-scripts.patch</Patch>
+            <Patch level="1">fix-python-detection.patch</Patch>
+            <!--Patch level="1">fix-failing-dbtree-test.patch</Patch-->
+
+            <!-- Suse patches -->
+            <!--Patch level="0">suse/krb5-1.5.1-fix-ftp-var-used-uninitialized.diff</Patch-->
+            <!--Patch level="0">suse/krb5-1.5.1-fix-var-used-before-value-set.diff</Patch-->
+            <!--Patch level="1">suse/krb5-1.6.3-fix-ipv6-query.diff</Patch-->
+
+            <!-- Fedora patches -->
+            <!--Patch level="1">fedora/krb5-1.7-pam.patch</Patch-->
+            <!--Patch level="0">fedora/krb5-trunk-manpaths.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-selinux-label.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3-netkit-rsh.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3-rlogind-environ.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3-ksu-access.patch</Patch>
+            <Patch level="1">fedora/krb5-1.5-ksu-path.patch</Patch>
+            <Patch level="1">fedora/krb5-1.2.1-passive.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-ktany.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3-ftp-glob.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-buildconf.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3.1-dns.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-kprop-mktemp.patch</Patch>
+            <Patch level="1">fedora/krb5-1.3.4-send-pr-tempfile.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-io.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-rcp-markus.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-api.patch</Patch>
+            <Patch level="1">fedora/krb5-1.4.1-telnet-environ.patch</Patch>
+            <Patch level="1">fedora/krb5-1.6.3-login-lpass.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-nodeplibs.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-doublelog.patch</Patch>
+            <Patch level="1">fedora/krb5-1.6.2-key_exp.patch</Patch>
+            <Patch level="0">fedora/krb5-trunk-kpasswd_tcp.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-dirsrv-accountlock.patch</Patch>
+            <Patch level="1">fedora/krb5-1.6.3-ftp_fdleak.patch</Patch>
+            <Patch level="1">fedora/krb5-1.6.3-ftp_glob_runique.patch</Patch>
+            <Patch level="0">fedora/krb5-trunk-ftp_mget_case.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-time_t_size.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-sizeof.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-largefile.patch</Patch>
+            <Patch level="0">fedora/krb5-1.7-openssl-1.0.patch</Patch>
+
+            <Patch level="1">fedora/krb5-1.7-create_on_load.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-opte.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7-exp_warn.patch</Patch>
+            <Patch level="1">fedora/krb5-1.7.1-kpasswd_ccache.patch</Patch>
+            <Patch level="0">fedora/krb5-1.7.1-kpasswd_ipv6.patch</Patch-->
+
+            <!-- Fix GSSAPI library null pointer dereference which could be
+              triggered by malformed client requests (CVE-2010-1321) (#13133) -->
+            <!--Patch level="1">fedora/krb5-CVE-2010-1321-1.7.1.patch</Patch-->
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>mit-kerberos</Name>
+        <RuntimeDependencies>
+            <Dependency>keyutils</Dependency>
+            <!-- FIXME: This introduces a circular dep
+            <Dependency>openldap-client</Dependency>
+            -->
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="config">/etc</Path>
+            <Path fileType="header">/usr/include</Path>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="executable">/usr/sbin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path>
+            <Path fileType="data">/var/lib</Path>
+            <Path fileType="info">/usr/share/info</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+        <AdditionalFiles>
+            <AdditionalFile owner="root" permission="0644" target="/etc/krb5.conf">krb5.conf</AdditionalFile>
+            <AdditionalFile owner="root" permission="0644" target="/etc/kdc.conf">kdc.conf</AdditionalFile>
+        </AdditionalFiles>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-09-27</Date>
+            <Version>1.10.3</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

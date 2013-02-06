@@ -1,0 +1,38 @@
+diff -up kdelibs-4.2.85/kdeui/icons/kicontheme.cpp.kde149705 kdelibs-4.2.85/kdeui/icons/kicontheme.cpp
+--- kdelibs-4.2.85/kdeui/icons/kicontheme.cpp.kde149705	2009-04-15 12:26:44.000000000 +0200
++++ kdelibs-4.2.85/kdeui/icons/kicontheme.cpp	2009-05-11 16:01:29.000000000 +0200
+@@ -525,7 +525,7 @@ QString KIconTheme::current()
+     }
+ 
+     KConfigGroup cg(KGlobal::config(), "Icons");
+-    *_theme = cg.readEntry("Theme", defaultThemeName());
++    *_theme = cg.readEntry("Theme4", cg.readEntry("Theme", defaultThemeName()));
+     if ( *_theme == QLatin1String("hicolor") ) {
+         *_theme = defaultThemeName();
+     }
+diff -up kdelibs-4.2.85/kdeui/kernel/kglobalsettings.cpp.kde149705 kdelibs-4.2.85/kdeui/kernel/kglobalsettings.cpp
+--- kdelibs-4.2.85/kdeui/kernel/kglobalsettings.cpp.kde149705	2009-03-27 15:47:33.000000000 +0100
++++ kdelibs-4.2.85/kdeui/kernel/kglobalsettings.cpp	2009-05-11 16:00:06.000000000 +0200
+@@ -856,7 +856,7 @@ void KGlobalSettings::Private::applyGUIS
+     if (kde_overrideStyle.isEmpty()) {
+         const QString &defaultStyle = KStyle::defaultStyle();
+         const KConfigGroup pConfig(KGlobal::config(), "General");
+-        const QString &styleStr = pConfig.readEntry("widgetStyle", defaultStyle);
++        const QString &styleStr = pConfig.readEntry("widgetStyle4", pConfig.readEntry("widgetStyle", defaultStyle));
+ 
+         if (styleStr.isEmpty() ||
+                 // check whether we already use the correct style to return then
+diff -up kdelibs-4.2.85/kutils/kdeglobals.kcfg.kde149705 kdelibs-4.2.85/kutils/kdeglobals.kcfg
+--- kdelibs-4.2.85/kutils/kdeglobals.kcfg.kde149705	2009-04-15 12:26:45.000000000 +0200
++++ kdelibs-4.2.85/kutils/kdeglobals.kcfg	2009-05-11 16:00:06.000000000 +0200
+@@ -24,6 +24,10 @@
+    <whatsthis>The name of the widget style, for example &quot;keramik&quot; or &quot;plastik&quot;. Without quotes.</whatsthis>
+    <default>keramik</default>
+   </entry>
++  <entry key="widgetStyle4" type="String" >
++   <label>Widget style to use for KDE 4</label>
++   <whatsthis>The name of the widget style, for example &quot;oxygen&quot;. Without quotes. Defaults to widgetStyle.</whatsthis>
++  </entry>
+   <entry key="windowBackground" type="String" />
+   <entry key="windowForeground" type="String" />
+   <entry key="UseSystemBell" type="Bool" >

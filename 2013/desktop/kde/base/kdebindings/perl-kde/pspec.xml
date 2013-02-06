@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>perl-kde</Name>
+        <Homepage>http://kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>library</IsA>
+        <Summary>KDE4 Perl bindings</Summary>
+        <Description>Contains KDE4 language bindings for Perl.</Description>
+        <Archive sha1sum="4a076dbd61739e132f4a841c3bbe3028b2c2ca39" type="tarxz">mirrors://kde/unstable/4.9.98/src/perlkde-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>okular-devel</Dependency>
+            <Dependency>smoke-kde</Dependency>
+            <Dependency>perl-qt-devel</Dependency>
+            <Dependency>attica-devel</Dependency>    
+            <Dependency>kdepimlibs</Dependency>
+            <Dependency>kate-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>perl-kde</Name>
+        <RuntimeDependencies>
+            <Dependency>perl-qt</Dependency>
+            <Dependency>smoke-kde</Dependency>
+            <Dependency>smoke-qt</Dependency>
+            <Dependency>kdelibs</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="library">/usr/lib</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>gsettings-desktop-schemas3</Name>
+        <Homepage>http://www.gnome.org/</Homepage>
+        <Packager>
+            <Name>Osman Erkan</Name>
+            <Email>namso-01@hotmail.it</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Isa>data</Isa>
+        <Summary>Collection of GSettings schemas for GNOME desktop</Summary>
+        <Description>Gsettings-desktop-schemas contains a collection of GSettings schemas for settings shared by various components of a desktop.</Description>
+        <Archive sha1sum="a86e239289cc4939c47a93dabcb8912ade5f81fb" type="tarxz">http://ftp.acc.umu.se/pub/GNOME/sources/gsettings-desktop-schemas/3.7/gsettings-desktop-schemas-3.7.2.tar.xz</Archive>
+    </Source>
+
+    <Package>
+        <Name>gsettings-desktop-schemas3</Name>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+	    <Path fileType="library">/usr/lib/girepository-1.0</Path>
+            <Path fileType="data">/usr/share</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>gsettings-desktop-schemas3-devel</Name>
+        <RuntimeDependencies>
+            <Dependency release="current">gsettings-desktop-schemas3</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+            <Path fileType="data">/usr/share/pkgconfig/</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-11-21</Date>
+            <Version>3.7.2</Version>
+            <Comment>First release</Comment>
+            <Name>Osman Erkan</Name>
+            <Email>namso-01@hotmail.it</Email>
+        </Update>
+    </History>
+</PISI>

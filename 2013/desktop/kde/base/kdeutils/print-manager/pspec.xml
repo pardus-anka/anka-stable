@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>print-manager</Name>
+        <Homepage>http://kde.org/applications/system/printerapplet</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>printer-manager</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A KDE tool for managing print jobs and printers</Summary>
+        <Description>A KDE tool for managing print jobs and printers</Description>
+        <Archive sha1sum="4a3d143b3d192efc747958b5d4fd214937005f4a" type="tarxz">mirrors://kde/unstable/4.9.98/src/print-manager-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>python-kde-devel</Dependency>
+            <Dependency>system-config-printer</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>print-manager</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>python-kde</Dependency>
+            <Dependency>system-config-printer</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share</Path>
+            <Path fileType="library">/usr/lib</Path>    
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-01-06</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

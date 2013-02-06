@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>gst-plugins-base</Name>
+        <Homepage>http://gstreamer.net/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>library</IsA>
+        <Summary>Basepack of plugins for gstreamer</Summary>
+        <Description>GStreamer base plugins are a well-groomed and well-maintained collection of GStreamer plugins and elements, spanning the range of possible types of elements one would want to write for GStreamer. It also contains helper libraries and base classes useful for writing elements. A wide range of video and audio decoders, encoders, and filters are included.</Description>
+        <Archive sha1sum="e675401b62a6bf2e5ea966e833afd005a585e978" type="tarbz2">http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.36.tar.bz2</Archive>
+        <BuildDependencies>
+            <Dependency>gstreamer-devel</Dependency>
+            <Dependency>cdparanoia</Dependency>
+            <Dependency>pango-devel</Dependency>
+            <Dependency>cairo-devel</Dependency>
+            <Dependency>libXv-devel</Dependency>
+            <Dependency>liboil-devel</Dependency>
+            <Dependency>libogg-devel</Dependency>
+            <Dependency>libXext-devel</Dependency>
+            <Dependency>alsa-lib-devel</Dependency>
+            <Dependency>libvorbis-devel</Dependency>
+            <Dependency>libtheora-devel</Dependency>
+            <Dependency>libvisual-devel</Dependency>
+            <Dependency>gobject-introspection-devel</Dependency>
+            <Dependency>orc-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+            <!--Patch>ltmain_as-needed.patch</Patch>
+            <Patch level="1">gstpb-0.10.15-cd-speed.patch</Patch>
+            <Patch level="1">align.patch</Patch-->
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>gst-plugins-base</Name>
+        <RuntimeDependencies>
+            <Dependency>gstreamer</Dependency>
+            <Dependency>cdparanoia</Dependency>
+            <Dependency>pango</Dependency>
+            <Dependency>cairo</Dependency>
+            <Dependency>libXv</Dependency>
+            <Dependency>liboil</Dependency>
+            <Dependency>libogg</Dependency>
+            <Dependency>libXext</Dependency>
+            <Dependency>alsa-lib</Dependency>
+            <Dependency>libvorbis</Dependency>
+            <Dependency>libvisual</Dependency>
+            <Dependency>libtheora</Dependency>
+            <Dependency>orc</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+            <Path fileType="data">/usr/share/gir-1.0</Path>
+            <Path fileType="data">/usr/share/gst-plugins-base</Path>  
+            <Path fileType="man">/usr/share/man</Path>
+            <Path fileType="localedata">/usr/share/locale</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>gst-plugins-base-devel</Name>
+        <Summary>Development files for gst-plugins-base</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">gst-plugins-base</Dependency>
+            <Dependency>gstreamer-devel</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+            <Path fileType="data">/usr/lib/pkgconfig</Path>
+            <!-- FIXME: Remove this if not necessary -->
+            <Path fileType="man">/usr/share/man/man3</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-11-09</Date>
+            <Version>0.10.36</Version>
+            <Comment>First release</Comment>
+            <Name>Serdar Soytetir</Name>
+            <Email>tulliana@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

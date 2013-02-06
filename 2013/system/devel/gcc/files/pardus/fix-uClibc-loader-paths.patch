@@ -1,0 +1,17 @@
+Index: gcc-4.6.2/gcc/config/linux.h
+===================================================================
+--- gcc-4.6.2.orig/gcc/config/linux.h
++++ gcc-4.6.2/gcc/config/linux.h
+@@ -74,9 +74,9 @@ see the files COPYING3 and COPYING.RUNTI
+    GLIBC_DYNAMIC_LINKER must be defined for each target using them, or
+    GLIBC_DYNAMIC_LINKER32 and GLIBC_DYNAMIC_LINKER64 for targets
+    supporting both 32-bit and 64-bit compilation.  */
+-#define UCLIBC_DYNAMIC_LINKER "/lib/ld-uClibc.so.0"
+-#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
+-#define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER "/usr/lib/uClibc/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/usr/lib32/uClibc/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER64 "/usr/lib/uClibc/lib/ld64-uClibc.so.0"
+ #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
+ #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
+ #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"

@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>flashplugin</Name>
+        <Homepage>http://labs.adobe.com/technologies/flashplayer10</Homepage>
+        <Packager>
+            <Name>Fatih Arslan</Name>
+            <Email>farslan@pardus.org.tr</Email>
+        </Packager>
+        <License>Macromedia</License>
+        <IsA>library</IsA>
+        <Summary>Adobe Flash Player</Summary>
+        <Description>Adobe (Macromedia) Flash Player is an application to present interactive (and possibly multimedia-containing) content created using Adobe Flash.</Description>
+        <Archive sha1sum="8daf864a4814b7d9834816db1e68da0233f85d56" type="tarxz" target="i686">http://anka.pardus-linux.org/2013/erdinc/sourcefiles/flashplugin-11.2.202.261-i386.tar.xz</Archive>
+        <Archive sha1sum="41e7ca39a5bc3b4c827a249a3b413af15edb2c4e" type="tarxz" target="x86_64">http://anka.pardus-linux.org/2013/erdinc/sourcefiles/flashplugin-11.2.202.261-x86_64.tar.xz</Archive>
+    </Source>
+
+    <Package>
+        <Name>flashplugin</Name>
+        <RuntimeDependencies>
+            <Dependency>atk</Dependency>
+            <Dependency>gtk2</Dependency>
+            <Dependency>pango</Dependency>
+            <Dependency>cairo</Dependency>
+            <Dependency>fontconfig</Dependency>
+            <Dependency>freetype</Dependency>
+            <Dependency>gdk-pixbuf</Dependency>
+            <Dependency>libXt</Dependency>
+            <Dependency>libXext</Dependency>
+            <Dependency>nss</Dependency>
+            <Dependency>nspr</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1" type="security">
+            <Date>2013-01-09</Date>
+            <Version>11.2.202.261</Version>
+            <Comment>First release</Comment>
+            <Name>Erdinç Gültekin</Name>
+            <Email>erdincgultekin@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

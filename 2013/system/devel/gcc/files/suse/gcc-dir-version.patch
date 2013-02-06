@@ -1,0 +1,144 @@
+Index: gcc/Makefile.in
+===================================================================
+--- gcc/Makefile.in.orig	2011-11-08 16:23:29.000000000 +0100
++++ gcc/Makefile.in	2011-11-09 11:59:34.000000000 +0100
+@@ -792,12 +792,14 @@ GTM_H     = tm.h      $(tm_file_list) in
+ TM_H      = $(GTM_H) insn-flags.h $(OPTIONS_H)
+ 
+ # Variables for version information.
+-BASEVER     := $(srcdir)/BASE-VER  # 4.x.y
++BASEVER     := $(srcdir)/BASE-VER  # 4.x
++FULLVER     := $(srcdir)/FULL-VER  # 4.x.y
+ DEVPHASE    := $(srcdir)/DEV-PHASE # experimental, prerelease, ""
+ DATESTAMP   := $(srcdir)/DATESTAMP # YYYYMMDD or empty
+ REVISION    := $(srcdir)/REVISION  # [BRANCH revision XXXXXX]
+ 
+ BASEVER_c   := $(shell cat $(BASEVER))
++FULLVER_c   := $(shell cat $(FULLVER))
+ DEVPHASE_c  := $(shell cat $(DEVPHASE))
+ DATESTAMP_c := $(shell cat $(DATESTAMP))
+ 
+@@ -816,6 +818,7 @@ version     := $(BASEVER_c)
+ # (i.e. if DEVPHASE_c is empty).  The space immediately after the
+ # comma in the $(if ...) constructs is significant - do not remove it.
+ BASEVER_s   := "\"$(BASEVER_c)\""
++FULLVER_s   := "\"$(FULLVER_c)\""
+ DEVPHASE_s  := "\"$(if $(DEVPHASE_c), ($(DEVPHASE_c)))\""
+ DATESTAMP_s := "\"$(if $(DEVPHASE_c), $(DATESTAMP_c))\""
+ PKGVERSION_s:= "\"@PKGVERSION@\""
+@@ -2146,11 +2149,11 @@ options-save.o: options-save.c $(CONFIG_
+ 
+ dumpvers: dumpvers.c
+ 
+-CFLAGS-version.o += -DBASEVER=$(BASEVER_s) -DDATESTAMP=$(DATESTAMP_s) \
++CFLAGS-version.o += -DBASEVER=$(FULLVER_s) -DDATESTAMP=$(DATESTAMP_s) \
+ 	-DREVISION=$(REVISION_s) \
+ 	-DDEVPHASE=$(DEVPHASE_s) -DPKGVERSION=$(PKGVERSION_s) \
+ 	-DBUGURL=$(BUGURL_s)
+-version.o: version.c version.h $(REVISION) $(DATESTAMP) $(BASEVER) $(DEVPHASE)
++version.o: version.c version.h $(REVISION) $(DATESTAMP) $(FULLVER) $(DEVPHASE)
+ 
+ gtype-desc.o: gtype-desc.c $(CONFIG_H) $(SYSTEM_H) coretypes.h $(TM_H) \
+ 	$(HASHTAB_H) $(SPLAY_TREE_H) $(OBSTACK_H) $(BITMAP_H) \
+@@ -2736,10 +2739,10 @@ common/common-targhooks.o : common/commo
+    coretypes.h $(INPUT_H) $(TM_H) $(COMMON_TARGET_H) common/common-targhooks.h
+ 
+ bversion.h: s-bversion; @true
+-s-bversion: BASE-VER
+-	echo "#define BUILDING_GCC_MAJOR `echo $(BASEVER_c) | sed -e 's/^\([0-9]*\).*$$/\1/'`" > bversion.h
+-	echo "#define BUILDING_GCC_MINOR `echo $(BASEVER_c) | sed -e 's/^[0-9]*\.\([0-9]*\).*$$/\1/'`" >> bversion.h
+-	echo "#define BUILDING_GCC_PATCHLEVEL `echo $(BASEVER_c) | sed -e 's/^[0-9]*\.[0-9]*\.\([0-9]*\)$$/\1/'`" >> bversion.h
++s-bversion: FULL-VER
++	echo "#define BUILDING_GCC_MAJOR `echo $(FULLVER_c) | sed -e 's/^\([0-9]*\).*$$/\1/'`" > bversion.h
++	echo "#define BUILDING_GCC_MINOR `echo $(FULLVER_c) | sed -e 's/^[0-9]*\.\([0-9]*\).*$$/\1/'`" >> bversion.h
++	echo "#define BUILDING_GCC_PATCHLEVEL `echo $(FULLVER_c) | sed -e 's/^[0-9]*\.[0-9]*\.\([0-9]*\)$$/\1/'`" >> bversion.h
+ 	echo "#define BUILDING_GCC_VERSION (BUILDING_GCC_MAJOR * 1000 + BUILDING_GCC_MINOR)" >> bversion.h
+ 	$(STAMP) s-bversion
+ 
+@@ -3811,9 +3814,9 @@ build/%.o :  # dependencies provided by
+ ## build/version.o is compiled by the $(COMPILER_FOR_BUILD) but needs
+ ## several C macro definitions, just like version.o
+ build/version.o:  version.c version.h \
+-                  $(REVISION) $(DATESTAMP) $(BASEVER) $(DEVPHASE)
++                  $(REVISION) $(DATESTAMP) $(FULLVER) $(DEVPHASE)
+ 	$(COMPILER_FOR_BUILD) -c $(BUILD_COMPILERFLAGS) $(BUILD_CPPFLAGS) \
+-	-DBASEVER=$(BASEVER_s) -DDATESTAMP=$(DATESTAMP_s) \
++	-DBASEVER=$(FULLVER_s) -DDATESTAMP=$(DATESTAMP_s) \
+ 	-DREVISION=$(REVISION_s) \
+ 	-DDEVPHASE=$(DEVPHASE_s) -DPKGVERSION=$(PKGVERSION_s) \
+ 	-DBUGURL=$(BUGURL_s) -o $@ $<
+@@ -3988,7 +3991,7 @@ PREPROCESSOR_DEFINES = \
+   -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc/\" \
+   @TARGET_SYSTEM_ROOT_DEFINE@
+ 
+-CFLAGS-cppbuiltin.o += $(PREPROCESSOR_DEFINES) -DBASEVER=$(BASEVER_s)
++CFLAGS-cppbuiltin.o += $(PREPROCESSOR_DEFINES) -DBASEVER=$(FULLVER_s)
+ cppbuiltin.o: cppbuiltin.c $(CONFIG_H) $(SYSTEM_H) coretypes.h $(TM_H) \
+ 	$(TREE_H) cppbuiltin.h Makefile
+ 
+@@ -4008,8 +4011,8 @@ build/gcov-iov$(build_exeext): build/gco
+ 		build/gcov-iov.o -o $@
+ 
+ gcov-iov.h: s-iov
+-s-iov: build/gcov-iov$(build_exeext) $(BASEVER) $(DEVPHASE)
+-	build/gcov-iov$(build_exeext) '$(BASEVER_c)' '$(DEVPHASE_c)' \
++s-iov: build/gcov-iov$(build_exeext) $(FULLVER) $(DEVPHASE)
++	build/gcov-iov$(build_exeext) '$(FULLVER_c)' '$(DEVPHASE_c)' \
+ 	    > tmp-gcov-iov.h
+ 	$(SHELL) $(srcdir)/../move-if-change tmp-gcov-iov.h gcov-iov.h
+ 	$(STAMP) s-iov
+Index: libjava/Makefile.am
+===================================================================
+--- libjava/Makefile.am.orig	2011-11-03 16:30:42.000000000 +0100
++++ libjava/Makefile.am	2011-11-09 11:59:34.000000000 +0100
+@@ -774,7 +774,7 @@ install_data_local_split = 50
+ install-data-local:
+ 	$(PRE_INSTALL)
+ ## Install the .pc file.
+-	@pc_version=`echo $(GCJVERSION) | sed -e 's/[.][^.]*$$//'`; \
++	@pc_version=`echo $(GCJVERSION)`; \
+ 	file="libgcj-$${pc_version}.pc"; \
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgconfigdir); \
+ 	echo "  $(INSTALL_DATA) libgcj.pc $(DESTDIR)$(pkgconfigdir)/$$file"; \
+Index: libjava/Makefile.in
+===================================================================
+--- libjava/Makefile.in.orig	2011-11-03 16:31:17.000000000 +0100
++++ libjava/Makefile.in	2011-11-09 11:59:34.000000000 +0100
+@@ -12411,7 +12411,7 @@ install-exec-hook: install-binPROGRAMS i
+ @BUILD_ECJ1_TRUE@	mv $(DESTDIR)$(libexecsubdir)/`echo ecjx | sed 's,^.*/,,;$(transform);s/$$/$(EXEEXT)/'` $(DESTDIR)$(libexecsubdir)/ecj1$(host_exeext)
+ install-data-local:
+ 	$(PRE_INSTALL)
+-	@pc_version=`echo $(GCJVERSION) | sed -e 's/[.][^.]*$$//'`; \
++	@pc_version=`echo $(GCJVERSION)`; \
+ 	file="libgcj-$${pc_version}.pc"; \
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgconfigdir); \
+ 	echo "  $(INSTALL_DATA) libgcj.pc $(DESTDIR)$(pkgconfigdir)/$$file"; \
+Index: libjava/testsuite/lib/libjava.exp
+===================================================================
+--- libjava/testsuite/lib/libjava.exp.orig	2011-04-18 12:48:54.000000000 +0200
++++ libjava/testsuite/lib/libjava.exp	2011-11-09 11:59:34.000000000 +0100
+@@ -177,7 +177,7 @@ proc libjava_init { args } {
+ 
+     set text [eval exec "$GCJ_UNDER_TEST -B$specdir -v 2>@ stdout"]
+     regexp " version \[^\n\r\]*" $text version
+-    set libjava_version [lindex $version 1]
++    set libjava_version 4.7
+ 
+     verbose "version: $libjava_version"
+ 
+Index: gcc/cppbuiltin.c
+===================================================================
+--- gcc/cppbuiltin.c.orig	2011-03-14 15:04:06.000000000 +0100
++++ gcc/cppbuiltin.c	2012-01-24 10:22:18.000000000 +0100
+@@ -38,9 +38,9 @@ parse_basever (int *major, int *minor, i
+   static int s_major = -1, s_minor, s_patchlevel;
+ 
+   if (s_major == -1)
+-    if (sscanf (BASEVER, "%d.%d.%d", &s_major, &s_minor, &s_patchlevel) != 3)
++    if (sscanf (version_string, "%d.%d.%d", &s_major, &s_minor, &s_patchlevel) != 3)
+       {
+-	sscanf (BASEVER, "%d.%d", &s_major, &s_minor);
++	sscanf (version_string, "%d.%d", &s_major, &s_minor);
+ 	s_patchlevel = 0;
+       }
+ 

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM 'http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd'>
+<PISI>
+    <Source>
+        <Name>python-setuptools</Name>
+        <Homepage>http://pypi.python.org/pypi/setuptools</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>PSF-2.2</License>
+        <IsA>library</IsA>
+        <Summary>Python setuptools</Summary>
+        <Description>python-setuptools is a collection of enhancements to the Python distutils that allow you to more easily build and distribute Python packages, especially ones that have dependencies on other packages.</Description>
+        <Archive sha1sum="709bd97d46050d69865d4b588c7707768dfe6711" type="targz">http://pypi.python.org/packages/source/d/distribute/distribute-0.6.28.tar.gz</Archive>
+    </Source>
+
+    <Package>
+        <Name>python-setuptools</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib/python*</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+      <Update release="1">
+            <Date>2012-08-19</Date>
+            <Version>0.6.28</Version>
+            <Comment>First release</Comment>
+            <Name>Ramazan Utku</Name>
+            <Email>ramazanutku@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

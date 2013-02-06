@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kdebase-artwork</Name>
+        <Homepage>http://www.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>app:gui</IsA>
+        <Summary>KDE4 Base artwork for Plasma Workplace.</Summary>
+        <Description>This package contains artwork for a basic KDE Workspace installation.</Description>
+        <Archive sha1sum="34f8a14c5e7dca558c93ffbb3a94141cd900ff6e" type="tarxz">mirrors://kde/unstable/4.9.98/src/kde-base-artwork-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>kde-runtime</Dependency>
+	    <Dependency>kde-baseapps</Dependency>
+           
+        </BuildDependencies>
+     </Source>
+    
+     <Package>
+        <Name>kdebase-artwork</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>kdepimlibs</Dependency>
+            <!-- needed by printer configuration GUI system-config-printer-kde -->
+            <Dependency>system-config-printer</Dependency>
+            <Dependency>python-cups</Dependency>
+        </RuntimeDependencies>
+	<Files>            
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-13</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Idris Kalp</Name>
+            <Email>yaralikurt15@hotmail.com</Email>
+        </Update>
+   </History>
+</PISI>

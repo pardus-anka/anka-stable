@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>audacity</Name>
+        <Homepage>http://audacity.sourceforge.net/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>app:gui</IsA>
+        <Summary>Multi-track audio editor and recorder</Summary>
+        <Description>With Audacity, you can cut, copy, splice or mix sounds together; change the speed or pitch of a recording and much more. Editing is very fast and provides unlimited undo/redo. There are digital effects and spectrum analysis tools. Supported file formats include Ogg Vorbis, MP3, WAV, AIFF, and AU..</Description>
+        <Archive sha1sum="87e6a0e5c2e2a736380c0252817cf7627e8387bc" type="tarbz2">http://audacity.googlecode.com/files/audacity-fullsrc-2.0.1.tar.bz2</Archive>
+        <BuildDependencies>
+            <Dependency>alsa-lib-devel</Dependency>
+            <Dependency>ffmpeg-devel</Dependency>
+            <Dependency>flac-devel</Dependency>
+            <Dependency>gtk2-devel</Dependency>
+            <Dependency>jack-audio-connection-kit-devel</Dependency>
+            <Dependency>libid3tag-devel</Dependency>
+            <Dependency>libmad-devel</Dependency>
+            <Dependency>libogg-devel</Dependency>
+            <Dependency>libsamplerate-devel</Dependency>
+            <Dependency>libsndfile-devel</Dependency>
+            <Dependency>libvorbis-devel</Dependency>
+            <Dependency>soundtouch-devel</Dependency>
+            <Dependency>taglib-devel</Dependency>
+            <Dependency>twolame-devel</Dependency>
+            <Dependency>wxGTK-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+            <Patch level="1">library-paths.patch</Patch>
+            <Patch>CVE-2009-0490.diff</Patch>
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>audacity</Name>
+        <RuntimeDependencies>
+            <Dependency>alsa-lib</Dependency>
+            <Dependency>ffmpeg</Dependency>
+            <Dependency>flac</Dependency>
+            <Dependency>gtk2</Dependency>
+            <Dependency>jack-audio-connection-kit</Dependency>
+            <Dependency>libid3tag</Dependency>
+            <Dependency>libmad</Dependency>
+            <Dependency>libogg</Dependency>
+            <Dependency>libsamplerate</Dependency>
+            <Dependency>libsndfile</Dependency>
+            <Dependency>libvorbis</Dependency>
+            <Dependency>soundtouch</Dependency>
+            <Dependency>taglib</Dependency>
+            <Dependency>twolame</Dependency>
+            <Dependency>wxGTK</Dependency>
+
+            <!-- Only needed for runtime -->
+            <Dependency>lame</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share/audacity</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/mime</Path>
+            <Path fileType="data">/usr/share/pixmaps</Path>
+            <Path fileType="data">/usr/share/icons</Path>
+            <Path fileType="localedata">/usr/share/locale</Path>
+            <Path fileType="doc">/usr/share/doc/audacity</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+   </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-08-06</Date>
+            <Version>2.0.1</Version>
+            <Comment>First release</Comment>
+            <Name>Osman Erkan</Name>
+            <Email>namso-01@hotmail.it</Email>
+        </Update>
+    </History>
+</PISI>

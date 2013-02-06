@@ -1,0 +1,12 @@
+diff -Nrup c/scripts/check-local-headers.sh d/scripts/check-local-headers.sh
+--- c/scripts/check-local-headers.sh	2012-05-20 19:47:38.000000000 -0600
++++ d/scripts/check-local-headers.sh	2012-05-20 23:54:51.258670072 -0600
+@@ -28,7 +28,7 @@ exec ${AWK} -v includedir="$includedir"
+ BEGIN {
+   status = 0
+   exclude = "^" includedir \
+-    "/(.*-.*-.*/|)(asm[-/]|linux/|selinux/|gd|nss3/|sys/capability\\.h|libaudit\\.h)"
++    "/(.*-.*-.*/|)(asm[-/]|linux/|selinux/|gd|nss3/|sys/capability\\.h|libaudit\\.h|sys/sdt(-config)?\\.h))"
+ }
+ /^[^ ]/ && $1 ~ /.*:/ { obj = $1 }
+ {

@@ -1,0 +1,2 @@
+    #pisitools.remove("/usr/lib/%s/site-packages/setuptools/*.exe" % get.curPYTHON())
+Burayı Arch linux ten dolayı kapattım. Sonra açacaz. 

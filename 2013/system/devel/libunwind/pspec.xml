@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>libunwind</Name>
+        <Homepage>http://www.nongnu.org/libunwind/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>MIT</License>
+        <IsA>library</IsA>
+        <Summary>Call chain tracer of a program</Summary>
+        <Description>libunwind is a portable and efficient C programming interface (API) to determine the call chain of a program.</Description>
+        <Archive sha1sum="bd849c15bce57844d8bd086439bbd4bc736e7d97" type="targz">http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.0.1.tar.gz</Archive>
+        <Patches>
+            <Patch level="1">libunwind-disable-setjmp.patch</Patch>
+            <Patch level="1">libunwind-install-ptrace.patch</Patch>
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>libunwind</Name>
+        <Files>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="doc">/usr/share/doc/libunwind</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>libunwind-devel</Name>
+        <Summary>Development files for libunwind</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">libunwind</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="header">/usr/include</Path>
+            <Path fileType="man">/usr/share/man/man3</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2011-12-09</Date>
+            <Version>1.0.1</Version>
+            <Comment>First release</Comment>
+            <Name>Ozan Çağlayan</Name>
+            <Email>ozan@pardus.org.tr</Email>
+        </Update>
+    </History>
+</PISI>

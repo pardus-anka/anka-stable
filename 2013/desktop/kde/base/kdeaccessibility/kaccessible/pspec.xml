@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kaccessible</Name>
+        <Homepage>http://accessibility.kde.org</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>kaccessible</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>An accessibility bridge plugin</Summary>
+        <Description>kaccessible implements a QAccessibleBridgePlugin to provide accessibility services like focus tracking and a screenreader.</Description>
+        <Archive type="tarxz" sha1sum="bf5f4789cb091dd89cda893d03f0120f1b83c01f">mirrors://kde/unstable/4.9.98/src/kaccessible-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>speech-dispatcher-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+    <Package>
+        <Name>kaccessible</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>speech-dispatcher</Dependency>
+            <Dependency>jovie</Dependency>
+            <Dependency>kmag</Dependency>
+            <Dependency>kmousetool</Dependency>
+            <Dependency>kmouth</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share/dbus-1</Path>
+        </Files>
+    </Package>
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

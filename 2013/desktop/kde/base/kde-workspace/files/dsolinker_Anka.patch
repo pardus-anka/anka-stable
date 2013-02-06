@@ -1,0 +1,213 @@
+diff -Nuar kde-workspace-4.9.98.orig/libs/kephal/service/kephal.desktop kde-workspace-4.9.98/libs/kephal/service/kephal.desktop
+--- kde-workspace-4.9.98.orig/libs/kephal/service/kephal.desktop	2013-01-15 18:10:50.000000000 +0200
++++ kde-workspace-4.9.98/libs/kephal/service/kephal.desktop	2012-12-17 16:21:54.000000000 +0200
+@@ -41,7 +41,6 @@
+ Name[ko]=디스플레이 관리
+ Name[lt]=Ekrano valdymas
+ Name[lv]=Ekrāna pārvaldība
+-Name[mr]=डिस्प्ले व्यवस्थापन
+ Name[nb]=Skjermstyring
+ Name[nds]=Schirmpleeg
+ Name[nl]=Schermbeheer
+diff -Nuar kde-workspace-4.9.98.orig/libs/ksysguard/processcore/actions.actions kde-workspace-4.9.98/libs/ksysguard/processcore/actions.actions
+--- kde-workspace-4.9.98.orig/libs/ksysguard/processcore/actions.actions	2013-01-16 14:21:19.000000000 +0200
++++ kde-workspace-4.9.98/libs/ksysguard/processcore/actions.actions	2012-12-17 16:21:54.000000000 +0200
+@@ -42,7 +42,6 @@
+ Name[lv]=KSysGuard
+ Name[mk]=KSysGuard
+ Name[ml]=കെസിസ്ഗാര്‍ഡ്
+-Name[mr]=के सिसगार्ड
+ Name[nb]=KSysGuard
+ Name[nds]=KSysGuard
+ Name[nl]=KSysGuard
+@@ -500,7 +499,6 @@
+ Name[lt]=Keisti prioritetą CPU planuokliu
+ Name[lv]=Maina CPU plānotāju un prioritāti
+ Name[ml]=സിപിയു ഷെഡ്യൂളറും മുന്‍ഗണനയും മാറ്റുക
+-Name[mr]=CPU नियोजक व प्राधान्यता बदला
+ Name[nb]=Endre prosessorfordeler og prioritet
+ Name[nds]=CPU-Planer un Prioriteet ännern
+ Name[nl]=Wijzig CPU-scheduler en prioriteit
+diff -Nuar kde-workspace-4.9.98.orig/libs/ksysguard/scripts/smaps/smaps.desktop kde-workspace-4.9.98/libs/ksysguard/scripts/smaps/smaps.desktop
+--- kde-workspace-4.9.98.orig/libs/ksysguard/scripts/smaps/smaps.desktop	2013-01-15 18:10:50.000000000 +0200
++++ kde-workspace-4.9.98/libs/ksysguard/scripts/smaps/smaps.desktop	2012-12-17 16:21:54.000000000 +0200
+@@ -34,7 +34,6 @@
+ Name[ko]=자세한 메모리 정보
+ Name[lt]=Detali atminties informacija
+ Name[lv]=Detalizēta atmiņas informācija
+-Name[mr]=तपशीलवार स्मृती माहिती
+ Name[nb]=Detaljert minneinformasjon
+ Name[nds]=Verwiedert Informatschoon över den Spieker
+ Name[nl]=Gedetailleerde geheugeninformatie
+diff -Nuar kde-workspace-4.9.98.orig/libs/plasmagenericshell/backgrounddialog.cpp kde-workspace-4.9.98/libs/plasmagenericshell/backgrounddialog.cpp
+--- kde-workspace-4.9.98.orig/libs/plasmagenericshell/backgrounddialog.cpp	2013-01-16 10:25:27.000000000 +0200
++++ kde-workspace-4.9.98/libs/plasmagenericshell/backgrounddialog.cpp	2012-12-17 16:21:54.000000000 +0200
+@@ -17,7 +17,6 @@
+ #include <QFile>
+ #include <QPainter>
+ #include <QStandardItemModel>
+-#include <QUiLoader>
+ 
+ #include <KColorScheme>
+ #include <KDebug>
+@@ -28,7 +27,6 @@
+ #include <Plasma/Context>
+ #include <Plasma/Corona>
+ #include <Plasma/FrameSvg>
+-#include <Plasma/Package>
+ #include <Plasma/Wallpaper>
+ #include <Plasma/View>
+ 
+@@ -175,9 +173,8 @@
+ class BackgroundDialogPrivate
+ {
+ public:
+-    BackgroundDialogPrivate(BackgroundDialog* dialog, Plasma::Containment* c, Plasma::View* v)
+-     : q(dialog),
+-       containmentModel(0),
++    BackgroundDialogPrivate(Plasma::Containment* c, Plasma::View* v)
++     : containmentModel(0),
+        wallpaper(0),
+        view(v),
+        containment(c),
+@@ -190,8 +187,6 @@
+     {
+     }
+ 
+-    BackgroundDialog *q;
+-
+     Ui::BackgroundDialog backgroundDialogUi;
+ 
+     QStandardItemModel* containmentModel;
+@@ -203,36 +198,12 @@
+     KPageWidgetItem *appearanceItem;
+     KPageWidgetItem *mouseItem;
+     bool modified;
+-
+-    void createConfigurationInterfaceForPackage()
+-    {
+-        const QString uiFile = containment.data()->package()->filePath("mainconfigui");
+-        if (uiFile.isEmpty()) {
+-            kWarning() << "No ui file found for containment";
+-            return;
+-        }
+-        Plasma::ConfigLoader *configScheme = containment.data()->configScheme();
+-        if (!configScheme) {
+-            kWarning() << "No configuration scheme found for containment";
+-            return;
+-        }
+-
+-        QFile f(uiFile);
+-        QUiLoader loader;
+-        QWidget *widget = loader.load(&f);
+-        if (widget) {
+-            q->addPage(widget, configScheme,
+-                i18n("Settings"), containment.data()->icon(), i18n("%1 Settings", containment.data()->name()));
+-        } else {
+-            kWarning() << "Failed to load widget from" << uiFile;
+-        }
+-    }
+ };
+ 
+ BackgroundDialog::BackgroundDialog(const QSize& res, Plasma::Containment *c, Plasma::View* view,
+                                    QWidget* parent, const QString &id, KConfigSkeleton *s)
+     : KConfigDialog(parent, id, s),
+-      d(new BackgroundDialogPrivate(this, c, view))
++      d(new BackgroundDialogPrivate(c, view))
+ {
+     setWindowIcon(KIcon("preferences-desktop-wallpaper"));
+     setCaption(i18n("Desktop Settings"));
+@@ -273,11 +244,7 @@
+     d->mouseItem = addPage(m, i18n("Mouse Actions"), "input-mouse");
+ 
+     if (d->containment && d->containment.data()->hasConfigurationInterface()) {
+-        if (d->containment.data()->package()) {
+-            d->createConfigurationInterfaceForPackage();
+-        } else {
+-            d->containment.data()->createConfigurationInterface(this);
+-        }
++        d->containment.data()->createConfigurationInterface(this);
+         connect(this, SIGNAL(applyClicked()), d->containment.data(), SLOT(configDialogFinished()));
+         connect(this, SIGNAL(okClicked()), d->containment.data(), SLOT(configDialogFinished()));
+     }
+@@ -564,11 +531,7 @@
+ 
+             //add the new containment's config
+             if (d->containment.data()->hasConfigurationInterface()) {
+-                if (d->containment.data()->package()) {
+-                    d->createConfigurationInterfaceForPackage();
+-                } else {
+-                    d->containment.data()->createConfigurationInterface(this);
+-                }
++                d->containment.data()->createConfigurationInterface(this);
+                 connect(this, SIGNAL(applyClicked()), d->containment.data(), SLOT(configDialogFinished()));
+                 connect(this, SIGNAL(okClicked()), d->containment.data(), SLOT(configDialogFinished()));
+             }
+diff -Nuar kde-workspace-4.9.98.orig/libs/plasmagenericshell/CMakeLists.txt kde-workspace-4.9.98/libs/plasmagenericshell/CMakeLists.txt
+--- kde-workspace-4.9.98.orig/libs/plasmagenericshell/CMakeLists.txt	2013-01-17 19:32:47.000000000 +0200
++++ kde-workspace-4.9.98/libs/plasmagenericshell/CMakeLists.txt	2012-12-17 16:21:54.000000000 +0200
+@@ -34,7 +34,7 @@
+ 
+ kde4_add_library(plasmagenericshell SHARED ${plasmagenericshell_LIB_SRCS})
+ 
+-target_link_libraries(plasmagenericshell ${KDE4_PLASMA_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KFILE_LIBS} ${QT_QTSCRIPT_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY} ${QT_QTUITOOLS_LIBRARY} kworkspace kephal)
++target_link_libraries(plasmagenericshell ${KDE4_PLASMA_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KFILE_LIBS} ${QT_QTSCRIPT_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY} kworkspace kephal)
+ if(UNIX AND Q_WS_X11)
+     target_link_libraries(plasmagenericshell ${X11_LIBRARIES})
+ endif(UNIX AND Q_WS_X11)
+diff -Nuar kde-workspace-4.9.98.orig/libs/plasmagenericshell/widgetsexplorer/package/metadata.desktop kde-workspace-4.9.98/libs/plasmagenericshell/widgetsexplorer/package/metadata.desktop
+--- kde-workspace-4.9.98.orig/libs/plasmagenericshell/widgetsexplorer/package/metadata.desktop	2013-01-16 14:21:19.000000000 +0200
++++ kde-workspace-4.9.98/libs/plasmagenericshell/widgetsexplorer/package/metadata.desktop	2013-01-01 17:47:41.000000000 +0200
+@@ -17,7 +17,6 @@
+ Name[kk]=Үстел виджеттерін шолу
+ Name[km]=កម្មវិធី​រុករក​ធាតុក្រាហ្វិក​សម្រាប់​ផ្ទៃតុ
+ Name[ko]=데스크톱 위젯 탐색기
+-Name[mr]=डेस्कटॉप करिता विजेट एक्सप्लोरर
+ Name[nb]=Elementutforsker for skrivebordet
+ Name[nl]=Widget-verkenner voor het bureaublad
+ Name[pa]=ਡੈਸਕਟਾਪ ਲਈ ਵਿਦਜੈੱਟ ਐਕਸਪਲੋਰਰ
+diff -Nuar kde-workspace-4.9.98.orig/libs/solid/control/solidmodemmanager.desktop kde-workspace-4.9.98/libs/solid/control/solidmodemmanager.desktop
+--- kde-workspace-4.9.98.orig/libs/solid/control/solidmodemmanager.desktop	2013-01-15 18:10:50.000000000 +0200
++++ kde-workspace-4.9.98/libs/solid/control/solidmodemmanager.desktop	2012-12-17 16:21:54.000000000 +0200
+@@ -33,7 +33,6 @@
+ Comment[ko]=모뎀 관리 백엔드
+ Comment[lt]=Modemo tvarkymo sąsaja
+ Comment[lv]=Modema pārvaldes aizmugure
+-Comment[mr]=मोडेम व्यवस्थापन बॅकएन्ड
+ Comment[nb]=Bakgrunnsmotor for modemstyring
+ Comment[nds]=Hülpprogramm för de Modemkuntrull
+ Comment[nl]=Modembeheer backend
+diff -Nuar kde-workspace-4.9.98.orig/libs/solid/control/solidnetworkmanager.desktop kde-workspace-4.9.98/libs/solid/control/solidnetworkmanager.desktop
+--- kde-workspace-4.9.98.orig/libs/solid/control/solidnetworkmanager.desktop	2013-01-15 18:10:50.000000000 +0200
++++ kde-workspace-4.9.98/libs/solid/control/solidnetworkmanager.desktop	2012-12-17 16:21:54.000000000 +0200
+@@ -48,7 +48,7 @@
+ Comment[mai]=नेटवर्क प्रबंधन बैकएण्ड
+ Comment[mk]=Заден крај за менаџмент на мрежа
+ Comment[ml]=ശൃംഖല നടത്തിപ്പു് സംവിധാനം
+-Comment[mr]=संजाळ व्यवस्थापन बॅकएन्ड
++Comment[mr]=संजाळ व्यवस्थापन बैकएण्ड
+ Comment[nb]=Bakgrunnsmotor for nettverksstyring
+ Comment[nds]=Hülpprogramm för den Nettwark-Pleger
+ Comment[ne]=सञ्जाल व्यवस्थापन ब्याकइन्ड
+diff -Nuar kde-workspace-4.9.98.orig/libs/solid/control/solidremotecontrolmanager.desktop kde-workspace-4.9.98/libs/solid/control/solidremotecontrolmanager.desktop
+--- kde-workspace-4.9.98.orig/libs/solid/control/solidremotecontrolmanager.desktop	2013-01-15 18:10:50.000000000 +0200
++++ kde-workspace-4.9.98/libs/solid/control/solidremotecontrolmanager.desktop	2012-12-18 18:17:29.000000000 +0200
+@@ -5,7 +5,6 @@
+ Comment=Remote Control Management Backend
+ Comment[ar]=المنتهى الخلفي لإدارة التحكم عن بعد
+ Comment[ast]=Motor de xestión de control remotu
+-Comment[bs]=Pozadina za udaljenu kontrolu
+ Comment[ca]=Dorsal de gestió del comandament a distància
+ Comment[cs]=Podpůrná vrstva pro vzdálenou správu
+ Comment[da]=Motor til håndtering af fjernbetjening
+@@ -30,10 +29,8 @@
+ Comment[kk]=Қашықтан басқарғыштың басқару тетігі
+ Comment[kn]=ದೂರಸ್ಥ ನಿಯಂತ್ರಣ ನಿರ್ವಹಣೆ ಬ್ಯಾಕ್ಎಂಡ್
+ Comment[ko]=원격 제어 관리 백엔드
+-Comment[lt]=Nuotolinio valdymo tvarkymo varikliukas
+ Comment[mk]=Заден крај за менаџмент на оддалечена контрола
+ Comment[ml]=വിദൂര നിയന്ത്രണ നടത്തിപ്പിനുള്ള സംവിധാനം
+-Comment[mr]=रीमोट कंट्रोल व्यवस्थापन बॅकएन्ड
+ Comment[nb]=Bakgrunnsmotor for kontroll av fjernstyring
+ Comment[nds]=Hülpprogramm för de Pleeg vun Feernbedeners 
+ Comment[nl]=Afstandsbedieningbeheer-backend

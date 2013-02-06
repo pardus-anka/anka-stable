@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kde-l10n-pt</Name>
+        <Homepage>http://www.kde.org/</Homepage>
+        <Packager>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>locale:pt</IsA>
+        <Summary>Portuguese KDE4 internationalization package</Summary>
+        <Description>kde-l10n-pt is the KDE4 internationalization package that provides Portuguese translations for KDE4 applications.</Description>
+        <Archive type="tarxz" sha1sum="0be684d21795c461ae50a73c305e8c480ff4088c">mirrors://kde/unstable/4.9.98/src/kde-l10n/kde-l10n-pt-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+    <Package>
+        <Name>kde-l10n-pt</Name>
+        <Replaces>
+            <Package>kde4-i18n-pt</Package>
+            <Package>kde-i18n-pt</Package>
+        </Replaces>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+    </Package>
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>       
+    </History>
+</PISI>

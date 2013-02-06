@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>kalgebra</Name>
+        <Homepage>http://edu.kde.org/applications/mathematics/kalgebra</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2+</License>
+        <Icon>kalgebra</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A graph calculator</Summary>
+        <Description>KAlgebra is a fully featured calculator that lets you plot different types of 2D and 3D functions and to calculate easy and not so easy calculations, such as addition, trigonometric functions or derivatives.</Description>
+        <Archive sha1sum="2a64b29c602014572af79f4193f61c51dec7fcff" type="tarxz">mirrors://kde/unstable/4.9.98/src/kalgebra-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+            <Dependency>libkdeedu-devel</Dependency>    
+            <Dependency>analitza-devel</Dependency>
+            <Dependency>mesa-devel</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>kalgebra</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+            <Dependency>libkdeedu</Dependency>    
+            <Dependency>analitza</Dependency>
+            <Dependency>mesa</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="library">/usr/lib</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/icons</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

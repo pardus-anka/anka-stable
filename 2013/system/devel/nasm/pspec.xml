@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>nasm</Name>
+        <Homepage>http://nasm.sourceforge.net/</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>BSD</License>
+        <IsA>app:console</IsA>
+        <Summary>Groovy little assembler</Summary>
+        <Description>NASM is the Netwide Assembler, a free portable assembler for the Intel 80x86 microprocessor series.</Description>
+        <Archive sha1sum="97299ff4e484b699a11201e035d30af515722f38" type="tarxz">http://www.nasm.us/pub/nasm/releasebuilds/2.10.05/nasm-2.10.05.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>texinfo</Dependency>
+        </BuildDependencies>
+    </Source>
+
+    <Package>
+        <Name>nasm</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+            <Path fileType="man">/usr/share/man</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2012-09-15</Date>
+            <Version>2.10.05</Version>
+            <Comment>First release</Comment>
+            <Name>Serdar Soytetir</Name>
+            <Email>tulliana@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

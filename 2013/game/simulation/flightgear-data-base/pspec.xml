@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>flightgear-data-base</Name>
+        <Homepage>http://www.flightgear.org</Homepage>
+        <Packager>
+            <Name>İşbaran Akçayır</Name>
+            <Email>isbaran@gmail.com</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>flightgear</Icon>
+        <IsA>data</IsA>
+        <Summary>Flightgear data files</Summary>
+        <Description>Contains base data files for Flightgear simulator. You can also install additional data files, including the 3 DVD sized world map from the original website.</Description>
+        <Archive sha1sum="963c5b52a6cb3a674128c514de7291451be26a3a" type="tarbz2">ftp://ftp.linux.kiev.ua/pub/mirrors/ftp.flightgear.org/flightgear/Shared/FlightGear-data-2.4.0.tar.bz2</Archive>
+    </Source>
+
+    <Package>
+        <Name>flightgear-data-base</Name>
+        <Files>
+            <Path fileType="data">/usr/share</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2011-08-18</Date>
+            <Version>2.4.0</Version>
+            <Comment>First release</Comment>
+            <Name>İşbaran Akçayır</Name>
+            <Email>isbaran@gmail.com</Email>
+        </Update>
+    </History>
+</PISI>

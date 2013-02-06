@@ -1,0 +1,408 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>calligra-l10n</Name>
+        <Homepage>http://www.calligra.org</Homepage>
+        <Packager>
+            <Name>Osman Erkan</Name>
+            <Email>namso-01@hotmail.it</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <IsA>locale:ca</IsA>
+        <IsA>locale:da</IsA>
+        <IsA>locale:de</IsA>
+        <IsA>locale:en</IsA>
+        <IsA>locale:es</IsA>
+        <IsA>locale:et</IsA>
+        <IsA>locale:fi</IsA>
+        <IsA>locale:fr</IsA>
+        <IsA>locale:gl</IsA>
+        <IsA>locale:hu</IsA>
+        <IsA>locale:it</IsA>
+        <IsA>locale:ja</IsA>
+        <IsA>locale:kk</IsA>
+        <IsA>locale:nb</IsA>
+        <IsA>locale:nds</IsA>
+        <IsA>locale:nl</IsA>
+        <IsA>locale:pl</IsA>
+        <IsA>locale:pt</IsA>
+        <IsA>locale:pt_BR</IsA>
+        <IsA>locale:ru</IsA>
+        <IsA>locale:sk</IsA>
+        <IsA>locale:sv</IsA>
+        <IsA>locale:uk</IsA>
+        <IsA>locale:tr</IsA>
+        <IsA>locale:zh_CN</IsA>
+        <IsA>locale:zh_TW</IsA>
+        <PartOf>office.calligra.l10n</PartOf>
+        <Summary>Calligra için dil paketleri.</Summary>
+        <Description>Calligra ofis uygulaması için katalanca, Danca, Almanca, Yunanca, İngilizce, isponyolca, Estonyoca, Fince, Fransızca, Galiçyaca, Macanca, İtalyanca, Japonca, Kazakça, Norveçce, Saksonca, Felemenkçe, Lehçe, Portekizce, Brazilya Portekizcesi, Rusça, Slovakça, İsveççe, Ukraynaca, Çince, Taiean Çincesi ve Türkçe dillerini içeren yerelleştirme paketidir.</Description>
+        <Archive sha1sum="7855f974cbcf707b902e96a4a23ec35b6b8f7a0a" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-ca-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="50274bc9c95ee02adf3f03be3a53dd5ab3e95b9c" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-da-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="27d7dc85edb5f1b6da82e594681bd232a659ab1c" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-de-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="12d04b584075cf5a8b888c7c1add7ba8812f437a" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-el-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="4088943383ff4dba0de0e601eba9e1aec26a01c5" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-en_GB-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="78359ccc186091956490ffb0b711b54151dc754f" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-es-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="0e2893be7622f784fcb637033b61f6e421bc8d62" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-et-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="037ceea361f8d6c082e8dd18c892d39ed51ac33a" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-fi-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="baf295694260630681a508302b3c0184f3638f44" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-fr-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="f8487c8e00886aa990dfb192b603f6d6c4c591a9" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-gl-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="255ae2e4586f8a6796a64a0a9f2dcc34723ec4f0" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-hu-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="f12390e1103caac30620c6d186a6f239cc302353" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-it-2.5.94.tar.bz2</Archive>
+        <!--<Archive sha1sum="71742bd778e83a747e6eae5f3c498eb978e01d30" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-ja-2.5.94.tar.bz2</Archive>-->
+        <Archive sha1sum="d512b8aeef20298dde58e461fabf0342dfb00589" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-kk-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="94532641c51d8135a3eb4639526be47f32bf8141" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-nb-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="6995d90243e97142b8da8fb8ab715624a03b364e" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-nds-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="4884d85a0f35554570552dd3c7bc3b8eb1b30078" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-nl-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="5612fa5f0cadf1e2805c1b822c43a39c5cb5a796" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-pl-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="b3eb9801bc616a6d1b3104da3d6d28d37049d2d5" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-pt-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="086bb4b581e01c6a9f6c00f7bc4d326a846b173d" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-pt_BR-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="00be04e0d0092d21e0721a0cefc7e31eadf8e3d8" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-ru-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="cc55c34b1d7a070a7d77a283331994c4b75678ad" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-sk-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="40aeeb037ef360bafb0d4174024e8d8fa8758223" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-sv-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="9ec8822692948738e3b6da1e8af68b66bf15c5a2" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-uk-2.5.94.tar.bz2</Archive>
+        <!--<Archive sha1sum="c1d82e06f8e2b21fe7923b30861be14524a8c801" type="tarbz2">http://dl.dropbox.com/u/60245852/calligra-l10n-tr-2.5.94.tar.bz2</Archive>-->
+        <Archive sha1sum="802a93b74d296f1c4ca03daa864a233766ebdacd" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-zh_CN-2.5.94.tar.bz2</Archive>
+        <Archive sha1sum="610fe1b6c8a775d2bbefd1b7b09af641bfacdd3b" type="tarbz2">http://download.kde.org/unstable/calligra-2.5.94/calligra-l10n/calligra-l10n-zh_TW-2.5.94.tar.bz2</Archive>    
+</Source>
+
+    <Package>
+        <Name>calligra-l10n-ca</Name>
+        <Summary>Calligra için Katalanca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/ca</Path>
+            <Path fileType="localedata">/usr/share/locale/ca</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/ca.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-da</Name>
+        <Summary>Calligra için Danca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/da</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-de</Name>
+        <Summary>Calligra için Almanca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/de</Path>
+            <Path fileType="localedata">/usr/share/locale/de</Path>
+            <Path fileType="data">/usr/share/kde4/apps/calligra/autocorrect/de_DE.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-el</Name>
+        <Summary>Calligra için Yunanca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/el</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-en_GB</Name>
+        <Summary>Calligra için İngilizce yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-es</Name>
+        <Summary>Calligra için İsponyolca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/es</Path>
+            <Path fileType="localedata">/usr/share/locale/es</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/es.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-et</Name>
+        <Summary>Calligra için Estonyaca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/et</Path>
+            <Path fileType="localedata">/usr/share/locale/et</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-fi</Name>
+        <Summary>Calligra için Fince yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/fi</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/fi.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-fr</Name>
+        <Summary>Calligra için Fransızca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/fr</Path>
+            <Path fileType="localedata">/usr/share/locale/fr</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/fr.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-gl</Name>
+        <Summary>Calligra için Galiçyaca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/gl</Path>
+            <Path fileType="localedata">/usr/share/locale/gl</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-hu</Name>
+        <Summary>Calligra için Macarca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/hu</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/hu.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-it</Name>
+        <Summary>Calligra için İtalyanca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/it</Path>
+            <Path fileType="localedata">/usr/share/locale/it</Path>
+            <Path fileType="data">/usr/share/kde4/apps/calligra/autocorrect/it_IT.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-ja</Name>
+        <Summary>Calligra için Japonca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/ja</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-kk</Name>
+        <Summary>Calligra için Kazakça yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/kk</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-nb</Name>
+        <Summary>Calligra için Norveççe yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/nb</Path>
+            <Path fileType="data">/usr/share/kde4/apps/calligra/autocorrect/nb.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-nds</Name>
+        <Summary>Calligra için Saksonca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/nds</Path>
+            <Path fileType="data">/usr/share/kde4/apps/koffice/autocorrect/nds.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-nl</Name>
+        <Summary>Calligra için Felemenkçe yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/nl</Path>
+            <Path fileType="localedata">/usr/share/locale/nl</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-pl</Name>
+        <Summary>Calligra için Lehçe yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/pl</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-pt</Name>
+        <Summary>Calligra için Portekizce yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/pt</Path>
+            <Path fileType="localedata">/usr/share/locale/pt</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-pt_BR</Name>
+        <Summary>Calligra için Brazilya Portekizcesi yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/pt_BR</Path>
+            <Path fileType="localedata">/usr/share/locale/pt_BR</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-ru</Name>
+        <Summary>Calligra için Rusça yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/ru</Path>
+            <Path fileType="localedata">/usr/share/locale/ru</Path>
+            <Path fileType="data">/usr/share/kde4/apps/calligra/autocorrect/ru_RU.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-sk</Name>
+        <Summary>Calligra için Slovakça yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/sk</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-sv</Name>
+        <Summary>Calligra için İsveççe yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/sv</Path>
+            <Path fileType="localedata">/usr/share/locale/sv</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-tr</Name>
+        <Summary>Calligra için Türkçe yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/tr</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-uk</Name>
+        <Summary>Calligra için Ukraynaca yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="doc">/usr/share/doc/kde4/html/uk</Path>
+            <Path fileType="localedata">/usr/share/locale/uk</Path>
+            <Path fileType="data">/usr/share/kde4/apps/calligra/autocorrect/uk_UA.xml</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-zh_CN</Name>
+        <Summary>Calligra için Çince yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/zh_CN</Path>
+        </Files>
+    </Package>
+
+    <Package>
+        <Name>calligra-l10n-zh_TW</Name>
+        <Summary>Calligra için Taiwan Çincesi yerelleştirme paketi.</Summary>
+        <RuntimeDependencies>
+            <Dependency release="current">calligra-base</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="localedata">/usr/share/locale/zh_TW</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="2">
+            <Date>2012-02-05</Date>
+            <Version>2.5.94</Version>
+            <Comment>Güncellendi.</Comment>
+            <Name>Osman Erkan</Name>
+            <Email>osman.erkan@yandex.com</Email>
+        </Update>
+        <Update release="1">
+            <Date>2012-01-08</Date>
+            <Version>2.5.4</Version>
+            <Comment>First release</Comment>
+            <Name>Osman Erkan</Name>
+            <Email>osman.erkan@yandex.com</Email>
+        </Update>
+    </History>
+</PISI>

@@ -1,0 +1,136 @@
+diff -urNp coreutils-8.13-orig/gnulib-tests/gnulib.mk coreutils-8.13/gnulib-tests/gnulib.mk
+--- coreutils-8.13-orig/gnulib-tests/gnulib.mk	2011-09-08 17:09:08.000000000 +0200
++++ coreutils-8.13/gnulib-tests/gnulib.mk	2011-09-09 10:14:18.714689661 +0200
+@@ -235,9 +235,9 @@ EXTRA_DIST += nap.h test-chown.h test-ch
+ 
+ ## begin gnulib module cloexec-tests
+ 
+-TESTS += test-cloexec
+-check_PROGRAMS += test-cloexec
+-EXTRA_DIST += test-cloexec.c macros.h
++#TESTS += test-cloexec
++#check_PROGRAMS += test-cloexec
++#EXTRA_DIST += test-cloexec.c macros.h
+ 
+ ## end   gnulib module cloexec-tests
+ 
+@@ -321,9 +321,9 @@ EXTRA_DIST += test-dirname.c
+ 
+ ## begin gnulib module dup2-tests
+ 
+-TESTS += test-dup2
+-check_PROGRAMS += test-dup2
+-EXTRA_DIST += test-dup2.c signature.h macros.h
++#TESTS += test-dup2
++#check_PROGRAMS += test-dup2
++#EXTRA_DIST += test-dup2.c signature.h macros.h
+ 
+ ## end   gnulib module dup2-tests
+ 
+@@ -373,10 +373,10 @@ EXTRA_DIST += test-fadvise.c
+ 
+ ## begin gnulib module fchdir-tests
+ 
+-TESTS += test-fchdir
+-check_PROGRAMS += test-fchdir
+-test_fchdir_LDADD = $(LDADD) $(LIBINTL)
+-EXTRA_DIST += test-fchdir.c signature.h macros.h
++#TESTS += test-fchdir
++#check_PROGRAMS += test-fchdir
++#test_fchdir_LDADD = $(LDADD) $(LIBINTL)
++#EXTRA_DIST += test-fchdir.c signature.h macros.h
+ 
+ ## end   gnulib module fchdir-tests
+ 
+@@ -918,10 +918,10 @@ EXTRA_DIST += test-link.h test-link.c si
+ 
+ ## begin gnulib module linkat-tests
+ 
+-TESTS += test-linkat
+-check_PROGRAMS += test-linkat
+-test_linkat_LDADD = $(LDADD) @LIBINTL@
+-EXTRA_DIST += test-link.h test-linkat.c signature.h macros.h
++#TESTS += test-linkat
++#check_PROGRAMS += test-linkat
++#test_linkat_LDADD = $(LDADD) @LIBINTL@
++#EXTRA_DIST += test-link.h test-linkat.c signature.h macros.h
+ 
+ ## end   gnulib module linkat-tests
+ 
+@@ -1284,9 +1284,9 @@ EXTRA_DIST += test-memrchr.c zerosize-ptr.h signature.h macros.h
+ 
+ ## begin gnulib module memrchr-tests
+ 
+-TESTS += test-memrchr
+-check_PROGRAMS += test-memrchr
+-EXTRA_DIST += test-memrchr.c zerosize-ptr.h signature.h macros.h
++#TESTS += test-memrchr
++#check_PROGRAMS += test-memrchr
++#EXTRA_DIST += test-memrchr.c zerosize-ptr.h signature.h macros.h
+ 
+ ## end   gnulib module memrchr-tests
+ 
+@@ -1824,9 +1824,9 @@
+ 
+ ## begin gnulib module stdalign-tests
+ 
+-TESTS += test-stdalign
+-check_PROGRAMS += test-stdalign
+-EXTRA_DIST += test-stdalign.c macros.h
++#TESTS += test-stdalign
++#check_PROGRAMS += test-stdalign
++#EXTRA_DIST += test-stdalign.c macros.h
+ 
+ ## end   gnulib module stdalign-tests
+ 
+@@ -1891,9 +1891,9 @@ EXTRA_DIST += test-uname.c signature.h m
+ 
+ ## begin gnulib module unistd-safer-tests
+ 
+-TESTS += test-dup-safer
+-check_PROGRAMS += test-dup-safer
+-EXTRA_DIST += test-dup-safer.c macros.h
++#TESTS += test-dup-safer
++#check_PROGRAMS += test-dup-safer
++#EXTRA_DIST += test-dup-safer.c macros.h
+ 
+ ## end   gnulib module unistd-safer-tests
+ 
+@@ -1997,10 +1997,10 @@ EXTRA_DIST += test-usleep.c signature.h 
+ 
+ ## begin gnulib module utimens-tests
+ 
+-TESTS += test-utimens
+-check_PROGRAMS += test-utimens
+-test_utimens_LDADD = $(LDADD) $(LIB_CLOCK_GETTIME)
+-EXTRA_DIST += nap.h test-futimens.h test-lutimens.h test-utimens.h test-utimens-common.h test-utimens.c macros.h
++#TESTS += test-utimens
++#check_PROGRAMS += test-utimens
++#test_utimens_LDADD = $(LDADD) $(LIB_CLOCK_GETTIME)
++#EXTRA_DIST += nap.h test-futimens.h test-lutimens.h test-utimens.h test-utimens-common.h test-utimens.c macros.h
+ 
+ ## end   gnulib module utimens-tests
+ 
+diff -urNp coreutils-8.17-orig/tests/Makefile.am coreutils-8.17/tests/Makefile.am
+--- coreutils-8.17-orig/tests/Makefile.am
++++ coreutils-8.17/tests/Makefile.am
+@@ -87,7 +87,6 @@ TESTS =						\
+   rm/cycle					\
+   cp/link-heap					\
+   misc/tty-eof					\
+-  tail-2/inotify-hash-abuse			\
+   tail-2/inotify-hash-abuse2			\
+   tail-2/F-vs-missing				\
+   tail-2/F-vs-rename				\
+diff -urNp coreutils-8.13-orig/tests/touch/no-dereference coreutils-8.13/tests/touch/no-dereference
+--- coreutils-8.13-orig/tests/touch/no-dereference	2011-08-08 09:42:16.000000000 +0200
++++ coreutils-8.13/tests/touch/no-dereference	2011-09-09 10:15:21.167060702 +0200
+@@ -42,6 +42,8 @@ test -f nowhere && fail=1
+ grep '^#define HAVE_UTIMENSAT 1' "$CONFIG_HEADER" > /dev/null ||
+ grep '^#define HAVE_LUTIMES 1' "$CONFIG_HEADER" > /dev/null ||
+   skip_ 'this system lacks the utimensat function'
++grep '^#define HAVE_WORKINGKOJI 1' "$CONFIG_HEADER" > /dev/null ||
++  skip_ 'rest of the test disabled due to koji lack of utimensat function'
+ 
+ # Changing time of dangling symlink is okay.
+ # Skip the test if this fails, but the error text corresponds to

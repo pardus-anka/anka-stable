@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "http://www.pardus.org.tr/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>sweeper</Name>
+        <Homepage>http://kde.org/applications/utilities/sweeper</Homepage>
+        <Packager>
+            <Name>Pardus ANKA Admins</Name>
+            <Email>pisiciftligi@pardus-linux.org</Email>
+        </Packager>
+        <License>GPLv2</License>
+        <Icon>sweeper</Icon>
+        <IsA>app:gui</IsA>
+        <Summary>A system cleaner</Summary>
+        <Description>Sweeper helps to clean unwanted traces the user leaves on the system and to regain disk space removing unused temporary files.</Description>
+        <Archive sha1sum="dc85058699042f61e2c95186004b6c474bdaacfd" type="tarxz">mirrors://kde/unstable/4.9.98/src/sweeper-4.9.98.tar.xz</Archive>
+        <BuildDependencies>
+            <Dependency>kdelibs-devel</Dependency>
+        </BuildDependencies>
+        <Patches>
+            <Patch level="1">sweeper-4.7.90-desktop_docpath.patch</Patch>
+        </Patches>
+    </Source>
+
+    <Package>
+        <Name>sweeper</Name>
+        <RuntimeDependencies>
+            <Dependency>kdelibs</Dependency>
+        </RuntimeDependencies>
+        <Files>
+            <Path fileType="executable">/usr/bin</Path>
+            <Path fileType="data">/usr/share/applications</Path>
+            <Path fileType="data">/usr/share/dbus-1</Path>
+            <Path fileType="data">/usr/share/kde4</Path>
+            <Path fileType="doc">/usr/share/doc</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2013-01-19</Date>
+            <Version>4.9.98</Version>
+            <Comment>First release</Comment>
+            <Name>Yusuf Aydemir</Name>
+            <Email>yusuf.aydemir@istanbul.com</Email>
+        </Update>      
+    </History>
+</PISI>

@@ -13,10 +13,11 @@
         <IsA>app:gui</IsA>
         <Summary>Gnome Partition tool based on GNU-Parted</Summary>
         <Description>GParted is the Gnome Partition Editor application. GParted is an industrial-strength package for creating, destroying, resizing, moving, checking and copying partitions, and the filesystems on them. This is useful for creating space for new operating systems, reorganizing disk usage, copying data residing on hard disks and mirroring one partition with another (disk imaging).</Description>
-        <Archive sha1sum="d5d46f6651c2b92e3e4cc1c3c9b4ab80b6cd6524" type="tarbz2">http://sourceforge.net/projects/gparted/files/gparted/gparted-0.14.0/gparted-0.14.0.tar.bz2</Archive>
+        <Archive sha1sum="2642bad0d95a71549869bdb2af0365b10854822f" type="tarbz2">http://sourceforge.net/projects/gparted/files/gparted/gparted-0.14.1/gparted-0.14.1.tar.bz2</Archive>
         <BuildDependencies>
             <Dependency>parted-devel</Dependency>
             <Dependency>gtkmm-devel</Dependency>
+            <Dependency>atkmm-devel</Dependency>
         </BuildDependencies>
     </Source>
 
@@ -55,6 +56,13 @@
     </Package>
 
     <History>
+        <Update release="2">
+            <Date>2013-02-07</Date>
+            <Version>0.14.1</Version>
+            <Comment>Güncellendi.</Comment>
+            <Name>Osman Erkan</Name>
+	    <Email>osman.erkan@yandex.com</Email>
+        </Update>
         <Update release="1">
             <Date>2012-11-14</Date>
             <Version>0.14.0</Version>
